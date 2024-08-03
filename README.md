@@ -1,4 +1,4 @@
-# CarToFix
+# CarToFix - Frontend
 
 CarToFix es una aplicación web diseñada para talleres mecánicos, orientada a facilitar la organización, pulcritud y eficiencia en el trabajo, además de disminuir o incluso eliminar el uso de papel dentro del taller.
 
@@ -20,38 +20,36 @@ Puedes acceder a la landing page mediante este [enlace](#), donde encontrarás i
 
 ## Tecnologías
 
-CarToFix utiliza una variedad de tecnologías modernas para ofrecer una experiencia eficiente y fluida. A continuación, se describen las principales tecnologías empleadas en el desarrollo de esta aplicación:
-
-### Backend
-
-- **Python**: Lenguaje de programación utilizado para el desarrollo del backend.
-- **FastAPI**: Framework web rápido y eficiente para construir APIs con Python.
-- **Firebase**: Plataforma para el desarrollo de aplicaciones que proporciona una base de datos en tiempo real y otros servicios.
-
-### Frontend
+El frontend de CarToFix utiliza las siguientes tecnologías modernas para ofrecer una experiencia eficiente y fluida:
 
 - **React.js**: Biblioteca de JavaScript para construir interfaces de usuario.
 - **Styled Components**: Librería para aplicar estilos en componentes de React utilizando JavaScript.
 
-### Pruebas
+## Instalación
 
-- **Unittest**: Framework de pruebas unitarias para Python.
-- **Selenium**: Herramienta para automatizar pruebas en navegadores web.
+Para instalar y ejecutar el proyecto en tu entorno local, sigue estos pasos:
 
-### Despliegue
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/CarToFix/CarToFixV2_Frontend.git
+   ```
+2. Navega al directorio del proyecto:
+   ```bash
+   cd CarToFixV2_Frontend
+   ```
+3. Instala las dependencias necesarias:
+   ```bash
+   npm install
+   ```
+4. Inicia el servidor de desarrollo:
+   ```bash
+   npm start
+   ```
+5. Abre tu navegador y navega a `http://localhost:3000` para acceder a la aplicación.
 
-- **AWS (Amazon Web Services)**: Plataforma de servicios en la nube para el despliegue y alojamiento de la aplicación.
+## Despliegue
 
-### Organización
-
-- **Notion**: Herramienta de organización y colaboración utilizada para la gestión de proyectos y tareas.
-
-### Diseño
-
-- **Figma**: Herramienta de diseño de interfaces y prototipado.
-- **Adobe Illustrator**: Software de diseño gráfico utilizado para la creación de gráficos vectoriales y otros elementos visuales.
-
-Estas tecnologías han sido seleccionadas para asegurar que CarToFix sea robusta, escalable y fácil de mantener, permitiendo así a los talleres mecánicos optimizar su flujo de trabajo y mejorar su eficiencia general.
+El frontend de CarToFix está preparado para ser desplegado en **AWS (Amazon Web Services)**. Consulta la documentación de AWS para más detalles sobre cómo realizar el despliegue.
 
 ## Integrantes y Roles
 
