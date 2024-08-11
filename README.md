@@ -1,97 +1,70 @@
-# CarToFix - Frontend
+# Getting Started with Create React App
 
-CarToFix es una aplicación web diseñada para talleres mecánicos, orientada a facilitar la organización, pulcritud y eficiencia en el trabajo, además de disminuir o incluso eliminar el uso de papel dentro del taller.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Descripción
+## Available Scripts
 
-CarToFix permite a los trabajadores del taller acceder a la aplicación desde cualquier dispositivo para visualizar de manera sencilla los trabajos que deben realizarse, los que están listos para entregar y los que ya se han enviado. Además, se pueden registrar nuevos trabajos, que quedarán asociados a la matrícula del vehículo, permitiendo al taller tener guardado el historial de todo lo que se le ha realizado al vehículo en un solo lugar.
+In the project directory, you can run:
 
-## Características
+### `npm start`
 
-- **Gestión de trabajos**: Visualiza los trabajos pendientes, en progreso y completados.
-- **Registro de nuevos trabajos**: Añade nuevos trabajos asociados a la matrícula del vehículo.
-- **Historial del vehículo**: Accede al historial completo de reparaciones y mantenimiento de cada vehículo.
-- **Reducción de papel**: Facilita la transición a un taller sin papeles.
-- **Presupuesto y aprobación**: Aprobación del presupuesto por parte del cliente via correo electrónico.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Uso
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-Puedes acceder a la landing page mediante este [enlace](#), donde encontrarás información adicional y acceso directo a la aplicación.
+### `npm test`
 
-## Tecnologías
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-El frontend de CarToFix utiliza las siguientes tecnologías modernas para ofrecer una experiencia eficiente y fluida:
+### `npm run build`
 
-- **React.js**: Biblioteca de JavaScript para construir interfaces de usuario.
-- **Styled Components**: Librería para aplicar estilos en componentes de React utilizando JavaScript.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Instalación
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Para instalar y ejecutar el proyecto en tu entorno local, sigue estos pasos:
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/CarToFix/CarToFixV2_Frontend.git
-   ```
-2. Navega al directorio del proyecto:
-   ```bash
-   cd CarToFixV2_Frontend
-   ```
-3. Instala las dependencias necesarias:
-   ```bash
-   npm install
-   ```
-4. Inicia el servidor de desarrollo:
-   ```bash
-   npm start
-   ```
-5. Abre tu navegador y navega a `http://localhost:3000` para acceder a la aplicación.
+### `npm run eject`
 
-## Despliegue
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-El frontend de CarToFix está preparado para ser desplegado en **AWS (Amazon Web Services)**. Consulta la documentación de AWS para más detalles sobre cómo realizar el despliegue.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Integrantes y Roles
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-CarToFix ha sido desarrollado por un equipo dedicado de profesionales, cada uno desempeñando múltiples roles para asegurar el éxito del proyecto. A continuación, se detallan los integrantes del equipo y sus responsabilidades, junto con enlaces a sus perfiles de LinkedIn y GitHub:
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-### Gestión de Proyecto
+## Learn More
 
-- **Guillermo Vega (PM, FullStack)**
-  - [LinkedIn](https://www.linkedin.com/in/guillermo-vega-hernandez/) | [GitHub](https://github.com/Korchea)
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### Líderes de Equipo
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-- **Diego Bonora (Team Leader FrontEnd)**
-  - [LinkedIn](https://www.linkedin.com/in/diego-bonora/) | [GitHub](https://github.com/Diego-Bonora)
+### Code Splitting
 
-- **Emanuel Trias (Team Leader BackEnd, Testing)**
-  - [LinkedIn](https://www.linkedin.com/in/emanuel-trias-86641a280/) | [GitHub](https://github.com/KrasniKot)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Desarrollo
+### Analyzing the Bundle Size
 
-- **Pablo Riveiro (FrontEnd)**
-  - [LinkedIn](https://www.linkedin.com/in/pablo-riveiro-uy/) | [GitHub](https://github.com/pablo-riveiro-uy)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-- **Mishel Tomas (FrontEnd)**
-  - [LinkedIn](https://www.linkedin.com/in/mishel-tomas-53aa4229b/) | [GitHub](https://github.com/Mishel450)
+### Making a Progressive Web App
 
-- **Emily Sanchez (FrontEnd, UX/UI)**
-  - [LinkedIn](https://www.linkedin.com/in/emily-s%C3%A1nchez-234b35252/) | [GitHub](https://github.com/20Emi)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-- **Lucas Soria (FrontEnd, UX/UI)**
-  - [LinkedIn](https://www.linkedin.com/in/lucas-soria-a1b655299/) | [GitHub](https://github.com/lucassoriabusto)
+### Advanced Configuration
 
-- **Santiago Caritat (FullStack)**
-  - [LinkedIn](https://www.linkedin.com/in/santiago-caritat/) | [GitHub](https://github.com/SantiagoC16)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-- **Leonardo Rodriguez (BackEnd, Testing)**
-  - [LinkedIn](https://www.linkedin.com/in/leonardo-rodriguez-0822a72a0/) | [GitHub](https://github.com/LeoRod17)
+### Deployment
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-Cada miembro del equipo ha aportado sus habilidades y experiencia en diferentes áreas para hacer de CarToFix una herramienta útil y eficiente para los talleres mecánicos. Estamos orgullosos del trabajo realizado y agradecemos la dedicación y esfuerzo de todos los integrantes del equipo.
+### `npm run build` fails to minify
 
----
-
-¡Gracias por utilizar CarToFix! Esperamos que esta herramienta haga tu trabajo más eficiente y organizado.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
