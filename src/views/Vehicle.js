@@ -9,8 +9,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 90vh;
-  overflow-y: hidden;
-  /// i dont know how to remove the scroll bar
 `;
 
 const Content = styled.div`
