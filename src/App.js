@@ -1,21 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
-import Vehicle from './views/Vehicle';
-
-const HeaderContainer = styled.div`
-  background-color: #2C518D;
-  height: 10vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-`;
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
-    <div>
-      <HeaderContainer />
-      <Vehicle />
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
