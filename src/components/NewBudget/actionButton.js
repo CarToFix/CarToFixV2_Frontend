@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Image } from "antd";
+import InspeccionVehicular from "../../assets/InspeccionVehicular.png"
 
 const data = { text: "Buscar Matricula" }
 
@@ -8,6 +10,7 @@ export const ActionButton = () => {
         <>
             <Container onClick={() => console.log("inspeccionar matricula")}>
                 <Text>{data.text}</Text>
+                <Image preview={false} width={70} src={InspeccionVehicular} />
             </Container >
         </>
     )
@@ -19,6 +22,7 @@ const Container = styled.div`
     border-radius: 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor:pointer;
 `
 
@@ -27,5 +31,4 @@ const Text = styled.p`
     margin: 0;
     width: 50%;
     font-size: 24px;
-    padding: 5%;
 `

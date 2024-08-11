@@ -10,10 +10,10 @@ export const NewBudgetForm = () => {
             <Container>
                 <Section>
                     <Title>Titulo</Title>
-                    <Select
+                    <CustomSelect
                         defaultValue="service"
-                        style={{ width: "65%" }}
                         // onChange={handleChange}
+                        dropdownStyle={{ backgroundColor: "#BABABA" }}
                         options={[
                             { value: 'service', label: 'Servicio' },
                             { value: 'work', label: 'Trabajo' },
@@ -23,10 +23,10 @@ export const NewBudgetForm = () => {
 
                 <Section>
                     <Title>Trabajo</Title>
-                    <Select
+                    <CustomSelect
                         defaultValue="service"
-                        style={{ width: "65%" }}
                         // onChange={handleChange}
+                        dropdownStyle={{ backgroundColor: "#BABABA" }}
                         options={[
                             { value: 'service', label: 'Servicio' },
                             { value: 'work', label: 'Trabajo' },
@@ -36,10 +36,10 @@ export const NewBudgetForm = () => {
 
                 <Section>
                     <Title>Aignado a</Title>
-                    <Select
+                    <CustomSelect
                         defaultValue="service"
-                        style={{ width: "65%" }}
                         // onChange={handleChange}
+                        dropdownStyle={{ backgroundColor: "#BABABA" }}
                         options={[
                             { value: 'service', label: 'Servicio' },
                             { value: 'work', label: 'Trabajo' },
@@ -49,10 +49,20 @@ export const NewBudgetForm = () => {
 
                 <Section>
                     <Title>Repuestos</Title>
-                    <Select
+                    <CustomSelect
                         defaultValue="service"
-                        style={{ width: "65%" }}
                         // onChange={handleChange}
+                        dropdownStyle={{ backgroundColor: "#BABABA" }}
+                        dropdownRender={menu => (
+                            <div style={{ backgroundColor: '#BABABA' }}>
+                                {React.cloneElement(menu, {
+                                    style: {
+                                        ...menu.props.style,
+                                        backgroundColor: '#BABABA', // Applies background to dropdown
+                                    },
+                                })}
+                            </div>
+                        )}
                         options={[
                             { value: 'service', label: 'Servicio' },
                             { value: 'work', label: 'Trabajo' },
@@ -62,8 +72,8 @@ export const NewBudgetForm = () => {
 
                 <Section>
                     <Title>Descripcion</Title>
-                    <TextArea
-                        style={{ width: "65%" }}
+                    <CustomTextArea
+                        style={{ width: "65%", backgroundColor: "#BABABA" }}
                         placeholder="Descripcion"
                         autoSize={{ minRows: 3, maxRows: 3 }}
                     />
@@ -71,10 +81,10 @@ export const NewBudgetForm = () => {
 
                 <Section>
                     <Title>Precio</Title>
-                    <InputNumber min={0} style={{ width: "65%" }} controls={false} defaultValue={0} />
+                    <InputNumber min={0} style={{ width: "65%", backgroundColor: "#BABABA" }} controls={false} defaultValue={0} />
                 </Section>
                 <ButtonContainer>
-                    <Button style={{ borderRadius: "10px", width: "100px" }} type="primary" size="small">Agregar</Button>
+                    <Button style={{ borderRadius: "10px", width: "100px", backgroundColor: "#2C518D", color: "white" }} size="small">Agregar</Button>
                 </ButtonContainer>
             </Container>
         </>
@@ -105,4 +115,34 @@ const ButtonContainer = styled.div`
 const Title = styled.h2`
     margin:0;
     width:50%;
+`
+
+const CustomSelect = styled(Select)`
+    width: 65%;
+
+    .ant-select-selector {
+        background-color: #BABABA !important;
+        color:black;
+    }
+
+    .ant-select-selector.ant-select-item-option-selected{
+        background-color: #FFD700 !important;
+        color: #000000 !important;
+    }
+`
+
+const CustomTextArea = styled(TextArea)`
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #bababa;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #d3d3d3;
+        border-radius: 10px;
+        border: 2px solid #bababa;
+    }
 `
