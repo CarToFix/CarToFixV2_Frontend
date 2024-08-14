@@ -7,13 +7,11 @@ const FirstDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 10%;
-  width: 100%;
 `;
 
 const Title = styled.h1`
   font-size: 60px;
   color: #2C518D;
-  margin: 0;
   font-family: Arial;
   text-transform: uppercase;
 `;
@@ -22,15 +20,15 @@ const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   margin-right: 20px;
-  background-color: #ECEDED;
   border-radius: 30px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.3);
   input {
     width: 100%;
     font-size: 15px;
     border-radius: 30px;
     border: 0px;
     padding: 8px 150px 8px 15px;
+    background-color: #ECEDED;
   }
   .search-icon {
     color: white;
@@ -52,7 +50,6 @@ const Button = styled.button`
   cursor: pointer;
   color: #2C518D;
   font-size: 30px;
-  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;

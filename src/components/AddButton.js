@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PlusCircleFilled } from '@ant-design/icons';
 
 const Container = styled.div`
-  position: fixed; /* Make the container fixed position */
+  position: fixed;
   bottom: 25px;
   right: 25px;
   font-size: 60px;
