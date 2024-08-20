@@ -2,8 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import { CloseOutlined, SearchOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button } from "antd";
-import ProfileIcon from '../components/profile_icon';
-import UserProfileIcon from '../components/user_profile_icon';
+import ProfileIcon from '../components/menu_usuarios/profile_icon';
+import UserProfileIcon from '../components/menu_usuarios/user_profile_icon';
 
 let userGiven = { name: "El Jefe" };
 let employersGiven = [

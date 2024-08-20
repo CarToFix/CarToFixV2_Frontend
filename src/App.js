@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import MenuUsuarios from './views/menu_usuarios';
-
+// import MenuUsuarios from './views/menu_usuarios';
+import CrearModificarEempleado from './views/crear_modificar_empleado';
 
 
 function App() {
@@ -10,7 +10,8 @@ function App() {
       <header >
         <h1>home</h1>
       </header>
-      <MenuUsuarios />
+      <CrearModificarEempleado/>
+      {/* <MenuUsuarios /> */}
     </div>
   );
 }
