@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import Databox from "../components/DataBox";
-import NewserviceButton from "../components/NewService";
+import NewserviceButton from "../components/ButtonNewService";
 import AddictionalData from "../components/AddictionalData";
 
 const Headers = styled.div `
@@ -157,8 +157,6 @@ export default function Dashboard() {
                                         <Databox headers={headers} data={confirm} tableHeight='17vh'/>
                                     </TableRecentConfirmations>
                                 </DivTableRecentConfirmations>
-
-                         
                         </RecentConfirmations>
                     </Column>
                 </MainContainer>
