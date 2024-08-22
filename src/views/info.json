@@ -1,0 +1,48 @@
+{
+    "nombre": "Raul Valdez",
+    "pin": "2514",
+    "permisos": [
+        {
+            "nombre": "Todos los permisos",
+            "permitido": false
+        },
+        {
+            "nombre": "Permiso 1",
+            "permitido": true
+        },
+        {
+            "nombre": "Permiso 2",
+            "permitido": false
+        },
+        {
+            "nombre": "Permiso 3",
+            "permitido": true
+        }
+    ],
+    "especialidad": [
+        {
+            "nombre": "Pintura",
+            "capacitado": true
+        },
+        {
+            "nombre": "Cambio de Aceite",
+            "capacitado": false
+        },
+        {
+            "nombre": "Chapa",
+            "capacitado": true
+        },
+        {
+            "nombre": "Electricidad",
+            "capacitado": false
+        },
+        {
+            "nombre": "Alineación",
+            "capacitado": false
+        },
+        {
+            "nombre": "Mecánica",
+            "capacitado": false
+        }
+    ]
+}
