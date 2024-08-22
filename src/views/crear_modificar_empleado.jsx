@@ -3,6 +3,14 @@ import styled from "styled-components";
 import { CloseOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 
+let actualUser = {
+    nombre: "Raul Valdez"
+}
+
+let actualPin = {
+    number: 2155
+}
+
 let permisos = [
     {
         nombre: "Todos los permisos",
@@ -36,76 +44,81 @@ export default function CrearModificarEempleado() {
         <>
             <Container>
                 <Aside>
-                    <div style={{display: 'flex', flexDirection:'column', alignItems: 'center', marginLeft: '16vw'}}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '16vw' }}>
 
-                    <BigProfilePic>
+                        <BigProfilePic>
 
-                        <Avatar size={120} icon={<UserOutlined />} />
+                            <Avatar size={120} icon={<UserOutlined />} />
 
-                    </BigProfilePic>
+                        </BigProfilePic>
 
-                    <BigButton text='Guardar' type='azul' GUARDAR />
-                    <BigButton text='Eliminar' type='rojo' ELIMINAR />
+                        <BigButton text='Guardar' type='azul' GUARDAR />
+                        <BigButton text='Eliminar' type='rojo' ELIMINAR />
                     </div>
                 </Aside>
                 <Main>
-                    <header style={{width: '100px', position:'fixed', top: '20px', right: '10px'}}>
-                        <CloseOutlined  style={{color: 'black'}}/>
+                    <header style={{ width: '100px', position: 'fixed', top: '20px', right: '10px' }}>
+                        <CloseOutlined style={{ color: 'black' }} />
                     </header>
                     <Article>
                         <form>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <LabelNombre>
-                                    <label>
+                                    <div>
                                         <h3>
                                             Nombre de Empleado
                                         </h3>
-                                        <input type="text" />
-                                    </label>
+                                        <input type="text" value={actualUser.nombre} />
+                                    </div>
                                 </LabelNombre>
                                 <LabelPin>
-                                    <label>
+                                    <div>
                                         <h3>
                                             Pin
                                         </h3>
-                                        <input type="text" />
-                                    </label>
+                                        <input type="text" value={actualPin.number} />
+                                    </div>
+
                                 </LabelPin>
                             </div>
 
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <LabelPermisos>
-                                    <h3>Permisos</h3>
-                                    <ul>
-                                        {
-                                            permisos.map((p, index) => {
-                                                return (
+                                    <div>
+                                        <h3>Permisos</h3>
+                                        <ul>
+                                            {
+                                                permisos.map((p, index) => {
+                                                    return (
 
-                                                    <li key={index}>
-                                                        <input type="checkbox" id={p.nombre} name={p.nombre} />
-                                                        <label htmlFor={p.nombre}>{p.nombre}</label>
-                                                    </li>
-                                                )
+                                                        <li key={index}>
+                                                            <input type="checkbox" id={p.nombre} name={p.nombre} />
+                                                            <label htmlFor={p.nombre}>{p.nombre}</label>
+                                                        </li>
+                                                    )
 
-                                            })
-                                        }
-                                    </ul>
+                                                })
+                                            }
+                                        </ul>
+                                    </div>
                                 </LabelPermisos>
                                 <LabelEspecialidad>
-                                    <h3>Especialidad</h3>
-                                    <ul>
-                                        {
-                                            especialidad.map((e, index) => {
-                                                return (
-                                                    <li key={index}>
-                                                        <input type="checkbox" id={e.nombre} name={e.nombre} />
-                                                        <label htmlFor={e.nombre}>{e.nombre}</label>
-                                                    </li>
-                                                )
+                                    <div>
+                                        <h3>Especialidad</h3>
+                                        <ul>
+                                            {
+                                                especialidad.map((e, index) => {
+                                                    return (
+                                                        <li key={index}>
+                                                            <input type="checkbox" id={e.nombre} name={e.nombre} />
+                                                            <label htmlFor={e.nombre}>{e.nombre}</label>
+                                                        </li>
+                                                    )
 
-                                            })
-                                        }
-                                    </ul>
+                                                })
+                                            }
+                                        </ul>
+                                    </div>
                                 </LabelEspecialidad>
 
                             </div>
@@ -180,6 +193,7 @@ const BigProfilePic = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 
 `
 
@@ -192,32 +206,67 @@ height: 5vh;
 width: 10vw;
 margin-bottom: 10px;
 
+
 `
 
 const LabelNombre = styled.div`
-
+display: flex;
+flex-direction: column;
 border: solid 2px #335FA6;
 width: 26vw;
-  height: 5vh;
-padding: 10px 20px;
+height: 5vh;
+align-items: left;
+justify-content: center;
+padding: 8px 20px;
 border-radius: 25px;
 margin: 5px;
-margin-bottom: 10px
+margin-bottom: 10px;
+h3 {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    width: fit-content;
+    color: #23406D;
+    margin-bottom: 5px;
+}
+div {
+    position: relative;
+    top: -16px;
+    input {
+        border: none;
+        margin-left: 5px;
+        font-size: larger;
+     }
+}
 
 
 `
 
-
-
 const LabelPin = styled.div`
-
 border: solid 2px #335FA6;
 width: 26vw;
-  height: 5vh;
-padding: 10px 20px;
+height: 5vh;
+padding: 8px 20px;
 border-radius: 25px;
 margin: 5px;
-margin-bottom: 10px
+margin-bottom: 10px;
+h3 {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    width: fit-content;
+    color: #23406D;
+    margin-bottom: 5px;
+}
+div {
+    position: relative;
+    top: -22px;
+    input {
+        border: none;
+        margin-left: 5px;
+        font-size: larger;
+    }
+}
 
 `
 const LabelPermisos = styled.div`
@@ -228,6 +277,18 @@ padding: 10px 20px;
 border-radius: 25px;
 list-style: none;
 margin: 5px;
+h3 {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    width: fit-content;
+    color: #23406D;
+}
+div {
+    position: relative;
+    top: -24px;
+    font-weight: 500;
+}
 
 `
 const LabelEspecialidad = styled.div`
@@ -238,5 +299,17 @@ padding: 10px 20px;
 border-radius: 25px;
 list-style: none;
 margin: 5px;
+h3 {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    width: fit-content;
+    color: #23406D;
+}
+div {
+    position: relative;
+    top: -22px;
+    font-weight: 500;
+}
 
 `
