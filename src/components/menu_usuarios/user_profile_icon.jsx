@@ -20,11 +20,16 @@ export default function UserProfileIcon({ user }) {
     }, [user]);
 
     return (
-        <div>
+        <Container>
             <ProfileIcon>
-{letters}
+                <h2>
+                    {letters}     
+                </h2>
             </ProfileIcon>
-        </div>
+            <p>
+                {letters}
+            </p>
+        </Container>
     );
 }
 
@@ -37,8 +42,24 @@ const ProfileIcon = styled.div`
     display: flex;
     font-weight: bold;  
     font-size: xx-large;
+    
     color: white;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`;
+    
+ 
+`
+
+const Container = styled.div`
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-weight: 700;
+    
+        color: #E67E22;
+    }
+
+`

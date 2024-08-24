@@ -22,17 +22,14 @@ export default function CrearModificarEmpleado() {
             {userInfo ? (
                 <Container>
                     <Aside>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '16vw' }}>
-
+                        <AsideContent>
                             <BigProfilePic>
-
-                                <Avatar size={120} icon={<UserOutlined />} />
-
+                                <Avatar size={200} icon={<UserOutlined />} />
                             </BigProfilePic>
+                            <BigButton>Guardar</BigButton>
+                            <BigButton>Eliminar</BigButton>
 
-                            <BigButton text='Guardar' type='azul' GUARDAR />
-                            <BigButton text='Eliminar' type='rojo' ELIMINAR />
-                        </div>
+                        </AsideContent>
                     </Aside>
                     <Main>
                         <header style={{ width: '100px', position: 'fixed', top: '20px', right: '10px' }}>
@@ -56,10 +53,8 @@ export default function CrearModificarEmpleado() {
                                             </h3>
                                             <input type="text" value={fetchedData.pin} />
                                         </div>
-
                                     </LabelPin>
                                 </div>
-
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <LabelPermisos>
                                         <div>
@@ -74,7 +69,6 @@ export default function CrearModificarEmpleado() {
                                                     );
                                                 })}
                                             </ul>
-
                                         </div>
                                     </LabelPermisos>
                                     <LabelEspecialidad>
@@ -89,15 +83,12 @@ export default function CrearModificarEmpleado() {
                                                                 <label htmlFor={e.nombre}>{e.nombre}</label>
                                                             </li>
                                                         )
-
                                                     })
                                                 }
                                             </ul>
                                         </div>
                                     </LabelEspecialidad>
-
                                 </div>
-
                             </form>
                         </Article>
                     </Main>
@@ -128,6 +119,7 @@ const Article = styled.div`
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+    margin-left: 5em;
     justify-content: center;
     align-content: center;
     text-align: start;
@@ -142,11 +134,19 @@ const Aside = styled.div`
     justify-content: center;
 `
 
+const AsideContent = styled.div`
+display: flex;
+flex-direction: column;
+ align-items: center;
+ margin-left: 16vw;
+`
+
 const BigProfilePic = styled.div`
     background-image: linear-gradient(to right, #335FA6, #23406D);
     border: solid 4px;
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
+    margin-top: -5em;
     border-radius: 50%;
     display: flex;
     margin-bottom: 20px;
@@ -159,12 +159,19 @@ const BigProfilePic = styled.div`
 `
 
 const BigButton = styled.div`
-    border: 4px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
     border-radius: 30px;
+    color: white;
+    padding: 0.2em 2.5em;
+    font-weight: 700;
     background-image: linear-gradient(to right, #335FA6, #23406D);
     height: 5vh;
-    width: 10vw;
-    margin-bottom: 10px;
+    width: 12vw;
+    margin-bottom: 15px;
+    box-shadow: 0 0.1em 0.2em rgb(0 0 0 / 60%);
 `
 
 const LabelNombre = styled.div`
@@ -178,7 +185,7 @@ const LabelNombre = styled.div`
     padding: 8px 20px;
     border-radius: 25px;
     margin: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     h3 {
         padding-left: 5px;
         padding-right: 5px;
@@ -194,6 +201,7 @@ const LabelNombre = styled.div`
             border: none;
             margin-left: 5px;
             font-size: larger;
+            background: none;
         }
     }
 `
@@ -205,7 +213,7 @@ const LabelPin = styled.div`
     padding: 8px 20px;
     border-radius: 25px;
     margin: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     h3 {
         padding-left: 5px;
         padding-right: 5px;
@@ -221,6 +229,7 @@ const LabelPin = styled.div`
             border: none;
             margin-left: 5px;
             font-size: larger;
+            background: none;
         }
     }
 `
@@ -235,14 +244,19 @@ const LabelPermisos = styled.div`
     h3 {
         padding-left: 5px;
         padding-right: 5px;
+        border: solid 2px #335FA6;
+        border-radius: 20px;
+        padding: 10px 20px;
         background-color: white;
-        width: fit-content;
+        width: 100%;
         color: #23406D;
+        margin-left: -22px;
     }
     div {
         position: relative;
         top: -24px;
         font-weight: 500;
+
     }
 `
 
@@ -256,13 +270,17 @@ const LabelEspecialidad = styled.div`
     h3 {
         padding-left: 5px;
         padding-right: 5px;
+        border: solid 2px #335FA6;
+        border-radius: 20px;
+        padding: 10px 20px;
         background-color: white;
-        width: fit-content;
+        width: 100%;
         color: #23406D;
+        margin-left: -22px;
     }
     div {
         position: relative;
-        top: -22px;
+        top: -24px;
         font-weight: 500;
     }
 `

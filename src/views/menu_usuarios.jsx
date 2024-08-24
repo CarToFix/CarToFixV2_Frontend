@@ -10,7 +10,7 @@ let employersGiven = [
   { name: "Carlos Perex" },
   { name: "Pablo Rodriguez" },
   { name: "Fernando Silva" },
-  { name: "Ruben Aoprhamian" },
+  { name: "Ruben Apramihan" },
   { name: "Silvia Perez" },
   { name: "Alberto Olmedo" },
 ];
@@ -26,8 +26,8 @@ export default function MenuUsuarios({ user = userGiven, employers = employersGi
         <section style={{ display: 'flex', justifyContent: 'end', margin: '3vh 20vw' }}>
           <form>
             <label htmlFor="searchUser"></label>
-            <input type='text' name='searchUser' placeholder='Buscar' style={{ backgroundColor: 'lightgray', border: 'solid 0.2px gray', borderRadius: '12px', padding: '7px 2px' }}></input>
-            <Button shape="circle" icon={<SearchOutlined />} style={{ backgroundColor: '#335FA6', color: 'white', marginLeft: '-20px', fontSize: '15px' }} />
+            <input type='text' value={'buscar'} name='searchUser' style={{ backgroundColor: '#ECEDED',border: 'none', borderRadius: '12px', padding: '7px 5px 7px 4px' }}></input>
+            <Button shape="circle" icon={<SearchOutlined />} style={{ backgroundColor: '#335FA6', color: 'white', marginLeft: '-20px', fontSize: '15px', top: '2px' }} />
           </form>
         </section>
         <Board> 
@@ -38,7 +38,7 @@ export default function MenuUsuarios({ user = userGiven, employers = employersGi
           })}
         </Board>
         <section style={{ display: 'flex', justifyContent: 'end', padding: '20px 50px' }}>
-          <PlusOutlined style={{ fontSize: '60px', color: 'white', background: '#E67E22', borderRadius: '50%', padding: '8px' }} />
+             <PlusOutlined style={{ fontSize: '35px', color: 'white', background: '#E67E22', borderRadius: '50%', padding: '8px' }} />
         </section>
       </main>
     </>
@@ -54,7 +54,7 @@ const Header = styled.div`
   color: white;
   flex-direction: row;
   justify-content: end;
-`;
+`
 
 const Board = styled.div`
 margin: 0 20vw;
@@ -63,4 +63,4 @@ margin: 0 20vw;
   flex-wrap: wrap;
   justify-content: start;
 
-`;
+`
