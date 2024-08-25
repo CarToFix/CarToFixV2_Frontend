@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Estiliza la tabla en general
 const StyledTable = styled.table `
 width: 100%;
 max-height: ${({ tableHeight }) => tableHeight || '100%'};
 table-layout: fixed;
 border-spacing: 1px 5px;
 `
+// Estiliza las filas
 const StyledTr = styled.tr` 
 display: flex;
 align-items: center;
@@ -14,6 +16,17 @@ justify-content: center;
 border-bottom: 4px solid transparent;
 padding-right: 10px;
 `
+// Estiliza el encabezado de la tabla
+const StyledThead = styled.thead `
+display: grid;
+margin-right: 9vh;
+position: sticky;
+top: 0;
+z-index: 1;
+border-bottom: 12px solid transparent;
+font-size: 17px;
+`
+// Estiliza el cuerpo de la tabla
 const StyledTBody = styled.tbody `
 display: block;
 max-height: ${({ tableHeight }) => tableHeight || '100%'};
@@ -36,26 +49,17 @@ border: 2px solid;
 scrollbar-width: thin;
 scrollbar-color: #C3BFBF transparent;
 `
-const StyledThead = styled.thead `
-display: grid;
-margin-right: 9vh;
-position: sticky;
-top: 0;
-z-index: 1;
-border-bottom: 12px solid transparent;
-font-size: 17px;
-`
 // Celdas del encabezado
 const StyledTh = styled.th`
-flex: 1;
+flex: 1; // hace que las celdas ocupe todo el espacio que le proporciono a la tabla
 padding: 5px;
 padding-left: 15px;
 text-align: left;
 color: #2C518D;
-
 border: 1px solid transparent;
 background-color: #C9C9C9;
 
+// Redondea la primera y ultima celda de cada fila
 &:first-child {
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -64,8 +68,8 @@ background-color: #C9C9C9;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
+// Para hacer la linea entre celdas
 position: relative;
-
 &:not(:first-child)::before {
 content: '';
 position: absolute;
@@ -76,8 +80,8 @@ width: 0.5px; /* Ancho de la línea delgada */
 background-color: black;
 }
 `
+// Estiliza las celdas del body de la tabla
 const StyledTd = styled.td `
-
 flex: 1;
 background-color: #C9C9C9;
 padding: 8px;
@@ -95,24 +99,20 @@ text-overflow: ellipsis;
 border-top-left-radius: 30px;
 border-bottom-left-radius: 30px;
 }
-
 &:last-of-type {
 border-top-right-radius: 30px;
 border-bottom-right-radius: 30px;
 }
-
 td:first-of-type {
 border-top-left-radius: 30px;
 border-bottom-left-radius: 30px;
 }
-
 td:last-of-type {
 border-top-right-radius: 30px;
 border-bottom-right-radius: 30px;
 }
 
 position: relative;
-
 &:not(:first-child)::before {
 content: '';
 position: absolute;
@@ -123,6 +123,7 @@ width: 0.5px; /* Ancho de la línea delgada */
 background-color: black;
 }
 `
+// Estiliza el botón
 const ButtonTable = styled.button `
 font-family: "inter", sans-serif;
 background-color: #2C518D;
@@ -136,25 +137,25 @@ border-radius: 20px;
 margin-top: 8px;
 margin-bottom: 8px;
 `
-function HeaderTable ({headers}) { // Para el header de la tabla
+function HeaderTable ({headers}) { // Para el encabezado de la tabla
   return (
     <StyledThead>
       <StyledTr>
         {headers.map((headers, index) => (
-          <StyledTh key={index}>{headers}</StyledTh>
+          <StyledTh key={index}>{headers}</StyledTh> // mapea los nombres de las columnas y genera una celda por cada uno
         ))}
       </StyledTr>
     </StyledThead>
     )
 }
 
-function BodyTable ({data, tableHeight}) {
+function BodyTable ({data, tableHeight}) { // Para el cuerpo de la tabla
   return (
     <StyledTBody tableHeight={tableHeight}>
       {data.map((row, index) => (
         <StyledTr key={index}>
           {Object.values(row).map((CurrentValue, index) => (
-            <StyledTd key={index}>{CurrentValue}</StyledTd>
+            <StyledTd key={index}>{CurrentValue}</StyledTd> // mapea los valores de cada fila y genera celdas por cada valor
           ))}
           <ButtonTable>
               Ver
@@ -165,18 +166,17 @@ function BodyTable ({data, tableHeight}) {
     </StyledTBody>
   )
 }
+
 export default function GenerarTable({headers, data, tableHeight}){
     if (data.length === 0)
-      return null;
+      return null; // Si no hay datos, no se renderiza la tabla
   
-    const columns = headers || Object.keys(data[0]);
+    const columns = headers || Object.keys(data[0]); // si el 'headers no se proporciona, se utilizan las claves del primer objeto en 'data' como nombres de las columnas
 
   return (
       <StyledTable tableHeight={tableHeight}>
-
-          <HeaderTable headers={columns}/>
-          <BodyTable data={data} tableHeight={tableHeight}/>
-
+          <HeaderTable headers={columns}/> {/* Genera el encabezado de la tabla */}
+          <BodyTable data={data} tableHeight={tableHeight}/> {/* Genera el cuerpo de la tabla */}
       </StyledTable>
   )
 }
