@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { CloseOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
-import userInfo from './info.json';
+import userInfo from './particular_employee.json';
 
 export default function CrearModificarEmpleado() {
 
@@ -26,8 +26,8 @@ export default function CrearModificarEmpleado() {
                             <BigProfilePic>
                                 <Avatar size={200} icon={<UserOutlined />} />
                             </BigProfilePic>
-                            <BigButton>Guardar</BigButton>
-                            <BigButton>Eliminar</BigButton>
+                            <BigBlueButton>Guardar</BigBlueButton>
+                            <BigRedButton>Eliminar</BigRedButton>
 
                         </AsideContent>
                     </Aside>
@@ -158,7 +158,7 @@ const BigProfilePic = styled.div`
     align-items: center;
 `
 
-const BigButton = styled.div`
+const BigBlueButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,6 +168,22 @@ const BigButton = styled.div`
     padding: 0.2em 2.5em;
     font-weight: 700;
     background-image: linear-gradient(to right, #335FA6, #23406D);
+    height: 5vh;
+    width: 12vw;
+    margin-bottom: 15px;
+    box-shadow: 0 0.1em 0.2em rgb(0 0 0 / 60%);
+`
+
+const BigRedButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 30px;
+    color: white;
+    padding: 0.2em 2.5em;
+    font-weight: 700;
+    background-color: #B72D2D;
     height: 5vh;
     width: 12vw;
     margin-bottom: 15px;

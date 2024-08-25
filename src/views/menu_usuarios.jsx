@@ -5,7 +5,7 @@ import { CloseOutlined, SearchOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button } from "antd";
 import ProfileIcon from '../components/menu_usuarios/profile_icon';
 import UserProfileIcon from '../components/menu_usuarios/user_profile_icon';
-import userInfo from './usuario_andEmployers_names.json';
+import userInfo from './user_and_employees.json';
 
 
 
@@ -20,7 +20,7 @@ export default function MenuUsuarios() {
     }
   }, [])
 
-  console.log('user info: ', fetchedData);
+  console.log('Employees info: ', fetchedData);
 
   return (
     <>
@@ -28,15 +28,16 @@ export default function MenuUsuarios() {
         <CloseOutlined style={{ margin: '1em' }} />
       </Header>
       <main>
-        <section style={{ display: 'flex', justifyContent: 'end', margin: '3vh 20vw' }}>
+        <section style={{ display: 'flex', justifyContent: 'end', width: '74vw', margin: '5em 0 2em 0' }}>
           <form>
             <label htmlFor="searchUser"></label>
-            <input type='text' value={'buscar'} name='searchUser' style={{ backgroundColor: '#ECEDED', border: 'none', borderRadius: '12px', padding: '7px 5px 7px 4px' }}></input>
-            <Button shape="circle" icon={<SearchOutlined />} style={{ backgroundColor: '#335FA6', color: 'white', marginLeft: '-20px', fontSize: '15px', top: '2px' }} />
+            <input type='text' value={'buscar'} name='searchUser' style={{ backgroundColor: '#ECEDED', border: 'none', borderRadius: '12px', padding: '7px 5px 7px 4px', boxShadow: '0 0.1em 0.2em rgb(0 0 0 / 60%)' }}></input>
+            <Button shape="circle" icon={<SearchOutlined />} style={{ backgroundColor: '#335FA6', color: 'white', marginLeft: '-20px', fontSize: '15px', top: '2px',  boxShadow: '0 0.1em 0.2em rgb(0 0 0 / 60%)'
+
+             }} />
           </form>
         </section>
         <Board>
-
           {fetchedData.user && <UserProfileIcon user={fetchedData.user.name} />}
           {fetchedData.empployees && fetchedData.empployees.map((e) => (
             <ProfileIcon key={e.id} name={e.name} />

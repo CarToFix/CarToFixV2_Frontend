@@ -7,7 +7,7 @@ export default function ProfileIcon({ name }) {
     return (
         <Container>
             <UserPrifileIcon>
-                <Avatar size={90} icon={<UserOutlined style={{marginTop: '15px'}}/>} />
+                <Avatar size={80} icon={<UserOutlined />} />
             </UserPrifileIcon>
             <p>
                 {name.split(' ')[0]}
