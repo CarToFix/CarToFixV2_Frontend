@@ -7,7 +7,7 @@ export default function ProfileIcon({ name }) {
     return (
         <Container>
             <UserPrifileIcon>
-                <Avatar size={90} icon={<UserOutlined />} />
+                <Avatar size={90} icon={<UserOutlined style={{marginTop: '15px'}}/>} />
             </UserPrifileIcon>
             <p>
                 {name.split(' ')[0]}
@@ -21,14 +21,13 @@ const UserPrifileIcon = styled.div`
     width: 100px;
     border-radius: 50%;
     display: flex;
-        margin: 1.5vw;
+    margin: 1.5vw;
     font-weight: bold;  
     font-size: xx-large;
     color : white;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-
 
 `
 
@@ -39,8 +38,6 @@ const Container = styled.div`
     align-items: center;
     p {
         font-weight: 700;
-    
-        color: #335FA6;
+            color: #335FA6;
     }
-
 `
