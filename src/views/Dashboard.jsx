@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import styled from 'styled-components';
 import Databox from "../components/DataBox";
 import NewserviceButton from "../components/ButtonNewService";
@@ -130,13 +130,24 @@ const confirm = [
 
 export default function Dashboard() {
 
-const usrId = JSON.parse(localStorage.getItem('workshop_name'))
 const baseURL = 'http://127.0.0.1:3000'
+const [vehicleModel, setVehicleModel] = useState(null);
 
-useEffect(() => {
-	axios.get(`${baseURL}/api/v1/dashboard/${usrId}`)
-	console.log()
-})
+useEffect(()=> {
+  const WorkshopName = localStorage.getItem('workshop_name')
+  
+  if (WorkshopName) {
+    axios.get(`${baseURL}/api/v1/dashboard/recent_confirmed_workshop_quote_tasks`, {
+      params: {workshop_name: WorkshopName}
+    })
+    .then(response => {
+      setVehicleModel(response.data.vehicle_model);
+      console.log(vehicleModel);
+      
+    })
+  }})
+
+
 
 return (
   <div>
