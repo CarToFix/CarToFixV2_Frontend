@@ -27,27 +27,21 @@ border-bottom: 12px solid transparent;
 font-size: 17px;
 `
 // Estiliza el cuerpo de la tabla
-const StyledTBody = styled.tbody `
-display: block;
-max-height: ${({ tableHeight }) => tableHeight || '100%'};
-
-overflow-y: auto;
-::-webkit-scrollbar {
-width: 12px;
-}
-
-::-webkit-scrollbar-track {
-background-color: transparent;
-border-radius: 20px;
-}
-::-webkit-scrollbar-thumb {
-background-color: #C3BFBF;
-border-radius: 20px;
-border: 2px solid;
-}
-
-scrollbar-width: thin;
-scrollbar-color: #C3BFBF transparent;
+const StyledTBody = styled.tbody`
+  display: block;
+  max-height: ${({ tableHeight }) => tableHeight || '100%'};
+  overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #BABABA;
+      border-radius: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #D9D9D9;
+      border-radius: 8px;
+  }
 `
 // Celdas del encabezado
 const StyledTh = styled.th`
