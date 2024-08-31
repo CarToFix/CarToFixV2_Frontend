@@ -10,11 +10,16 @@ const SecondDiv = styled.div`
   overflow-y: auto;
   padding: 20px;
   box-sizing: border-box; 
+  border-radius: 30px;
   &::-webkit-scrollbar {
     width: 15px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #D9D9D9;
+    background: #BABABA;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: white;
     border-radius: 8px;
   }
 `;
@@ -29,7 +34,7 @@ const Tile = styled.div`
   width: 290px;
   height: 310px;
   padding: 10px 15px 0px 15px;
-  font-family: Arial;
+  font-family: "inter", sans-serif;
   box-sizing: border-box;
 `;
 
@@ -66,10 +71,11 @@ const TileButtonContainer = styled.div`
   display: flex;
   justify-content: center; 
   button {
+    font-family: "inter", sans-serif;
     background-color: #2C518D;
     color: white;
     border: none;
-    border-radius: 15px;
+    border-radius: 20px;
     width: 50%;
     padding: 8px;
     margin: 0 0 20px 0;
@@ -90,7 +96,7 @@ const Tiles = () => {
             {model && <TileContentItem> Modelo: <TileTextBold>{model}</TileTextBold></TileContentItem>}
             {plate && <TileContentItem> Matricula: <TileTextBold>{plate}</TileTextBold></TileContentItem>}
             {services && <TileContentItem> Servicios: <TileTextBold>{services}</TileTextBold></TileContentItem>}
-            {lastService && <TileContentItem> Ult. Service: <TileTextBold>{lastService}</TileTextBold></TileContentItem>}
+            {lastService && <TileContentItem> Ult. Servicio: <TileTextBold>{lastService}</TileTextBold></TileContentItem>}
           </TileContent>
           <TileButtonContainer>
             <button>Ver</button>

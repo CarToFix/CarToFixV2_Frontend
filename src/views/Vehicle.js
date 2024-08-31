@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Tiles from '../components/Tiles';
 import TitleSearch from '../components/TitleSearch';
-import AddButton from '../components/AddButton'
+import Tiles from '../components/Tiles';
+import Table from '../components/Table';
+import AddButton from '../components/AddButton';
 
 const Container = styled.div`
   display: flex;
@@ -16,13 +17,17 @@ const Content = styled.div`
   width: 84vw;
 `;
 
-
 const Vehicle = () => {
+  const [isTilesView, setIsTilesView] = useState(true);
+  const toggleView = () => {
+    setIsTilesView(!isTilesView);
+  };
+
   return (
     <Container>
       <Content>
-        <TitleSearch />
-        <Tiles />
+        <TitleSearch isTilesView={isTilesView} onToggleView={toggleView} />
+        {isTilesView ? <Tiles /> : <Table />}
         <AddButton />
       </Content>
     </Container>

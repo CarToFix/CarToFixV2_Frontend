@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SearchOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { SearchOutlined, UnorderedListOutlined, AppstoreFilled } from '@ant-design/icons';
 
 const FirstDiv = styled.div`
   display: flex;
@@ -55,11 +55,11 @@ const Button = styled.button`
   justify-content: center;
 `;
 
-const TitleSearch = () => {
+const TitleSearch = ({ isTilesView, onToggleView }) => {
   return (
     <FirstDiv>
       <Title>
-        Vehiculo
+        Vehículos
       </Title>
       <SearchList>
         <SearchContainer>
@@ -69,8 +69,8 @@ const TitleSearch = () => {
           />
           <SearchOutlined className="search-icon" />
         </SearchContainer>
-        <Button>
-          <UnorderedListOutlined />
+        <Button onClick={onToggleView}>
+          {isTilesView ? <UnorderedListOutlined /> : <AppstoreFilled />}
         </Button>
       </SearchList>
     </FirstDiv>
