@@ -6,7 +6,7 @@ import { FaX } from "react-icons/fa6";
 const Headers = styled.div `
 width: 100vw;
 height: 12%;
-background-color: #2C518D;
+background: linear-gradient(3deg, #23406D, #335FA6);
 position: fixed;
 top:0;
 
@@ -56,6 +56,10 @@ align-self: flex-start;
 padding-left: 20px;
 color: #2C518D;
 margin: 10px;
+
+ @media (max-width: 1000px) {
+    font-size: 35px;
+  }
 `
 const Row = styled.div`
 display: flex;
@@ -69,18 +73,34 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+
+ @media (max-width: 1300px) {
+    width: 35%;
+  }
 `
 const InformationGeneral = styled.div`
 width: 55%;
 display: flex;
 justify-content: flex-start;
 align-items: center;
+
+ @media (max-width: 1300px) {
+    width: 70%;
+  }
 `
 const DivInfo = styled.div`
 width: 76%;
 height: 68%;
 display: flex;
 flex-direction: column;
+
+ @media (max-width: 1300px) {
+    width: 95%;
+  }
+   @media (max-width: 1000px) {
+    width: 95%;
+    font-size: 12px;
+  }
 `
 const RowInfo = styled.div`
 display: flex;
@@ -110,20 +130,30 @@ font-family: "inter", sans-serif;
 const ImagenEditSVG = styled.img`
 width: 4%;
 margin-right: 10px;
+cursor: pointer;
 `
 // Para foto de perfil
 const Photo = styled.div`
-background: red;
+background: linear-gradient(90deg, #335FA6, #23406D);
 width: 14vw;
 height: 14vw;
 border-radius: 100%;
 border: 4px solid white;
+
+ @media (max-width: 1000px) {
+    width: 15vw;
+    height: 15vw;
+  }
 `
 // nombre CarToFix
 const CarToFix = styled.h1`
 color: #2C518D;
 font-family: "inter", sans-serif;
 font-size: 40px;
+
+ @media (max-width: 1000px) {
+    font-size: 35px;
+  }
 `
 export default function Settings() {
   return (
@@ -146,37 +176,37 @@ export default function Settings() {
                   <RowInfo>
                   <TitleInfo>Correo</TitleInfo>
                   <Box>correo_del_tallero_o_dueño@gmail.com
-                    <ImagenEditSVG src={edit} alt="edit"/>
+                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
                   </Box>
                   </RowInfo>
                   <RowInfo>
                   <TitleInfo>Dueño</TitleInfo>
                   <Box>Francisco
-                    <ImagenEditSVG src={edit} alt="edit"/>
+                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
                   </Box>
                   </RowInfo>
                   <RowInfo>
                   <TitleInfo>Ciudad</TitleInfo>
                   <Box>Canelones
-                    <ImagenEditSVG src={edit} alt="edit"/>
+                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
                   </Box>
                   </RowInfo>
                   <RowInfo>
                   <TitleInfo>Dirección</TitleInfo>
                   <Box>La Paz, Treinta y tres 562
-                    <ImagenEditSVG src={edit} alt="edit"/>
+                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
                   </Box>
                   </RowInfo>
                   <RowInfo>
                   <TitleInfo>Contraseña</TitleInfo>
                   <Box>********
-                    <ImagenEditSVG src={edit} alt="edit"/>
+                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
                   </Box>
                   </RowInfo>
                   <RowInfo>
                   <TitleInfo>Celular</TitleInfo>
                   <Box>095 555 555
-                    <ImagenEditSVG src={edit} alt="edit"/>
+                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
                   </Box>
                   </RowInfo>
                 </DivInfo>
