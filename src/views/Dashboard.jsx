@@ -130,23 +130,24 @@ const confirm = [
 
 export default function Dashboard() {
 
-const baseURL = 'http://127.0.0.1:3000'
-const [vehicleModel, setVehicleModel] = useState(null);
+const baseURL = 'https://static-clementine-krasnikot-100f316b.koyeb.app'
+const [dashboardData, setDashboardData] = useState([])
 
 useEffect(()=> {
-  const WorkshopName = localStorage.getItem('workshop_name')
+ // const WorkshopName = localStorage.getItem('workshop_name')
+  
+  const WorkshopName = 'kjh'
   
   if (WorkshopName) {
-    axios.get(`${baseURL}/api/v1/dashboard/recent_confirmed_workshop_quote_tasks`, {
-      params: {workshop_name: WorkshopName}
-    })
-    .then(response => {
-      setVehicleModel(response.data.vehicle_model);
-      console.log(vehicleModel);
-      
-    })
-  }})
-
+    axios.get(`${baseURL}/api/v1/dashboard/recent_confirmed_workshop_quote_tasks?workshop_name=${WorkshopName}`)
+    .then((res) => {
+      if (res) {
+        setDashboardData(res.data)
+        console.log("dashboard data", dashboardData)
+    }}
+  
+  )}})
+  
 
 
 return (
