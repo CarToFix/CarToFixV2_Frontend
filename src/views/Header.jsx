@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ajustesIcon from '../assets/Ajustes.png';
+import Settings from './Settings';
 
 
 const Header = () => {
+    const [showSettings, setShowSettings] = useState(false);
 
-    const handleClick = (boxName) => {
-        alert(`Has hecho clic en ${boxName}`);
-    };
+  // Función para alternar la visibilidad del modal
+  const toggleSettings = () => {
+    setShowSettings(!showSettings); // Cambia de true a false o viceversa
+  };
+
 
   return (
-    <HeaderContainer>
-      <Box1 onClick={() => handleClick("Nombre del tallero")}>Nombre del taller</Box1>
-      <Box5 onClick={() => handleClick('Trabajos')}>Trabajos</Box5>
-      <Box4 onClick={() => handleClick('Presupuestos')}>Presupuestos</Box4>
-      <Box3 onClick={() => handleClick('Vehículos')}>Vehículos</Box3>
-      <Box2 onClick={() => handleClick('Repuestos')}>Repuestos</Box2>
-      <Box6 onClick={() => handleClick('Ajustes')}><img src={ajustesIcon} alt="Ajustes" /></Box6>
-    </HeaderContainer>
+    <>
+        <HeaderContainer>
+        <Box1 onClick={() => console.log("Nombre del tallero")}>Taller Mecanico</Box1>
+        <Box5 onClick={() => console.log('Trabajos')}>Trabajos</Box5>
+        <Box4 onClick={() => console.log('Presupuestos')}>Presupuestos</Box4>
+        <Box3 onClick={() => console.log('Vehículos')}>Vehículos</Box3>
+        <Box2 onClick={() => console.log('Repuestos')}>Repuestos</Box2>
+        <Box6 onClick={toggleSettings}><img src={ajustesIcon} alt="Ajustes" /></Box6>
+        </HeaderContainer>
+
+        {showSettings && <Settings />}
+    </>
   );
 };
 
@@ -31,6 +39,10 @@ const HeaderContainer = styled.div`
     width: 100%;
     align-items: stretch;
 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 `
 
 const Box1 = styled.h1`
@@ -43,14 +55,20 @@ const Box1 = styled.h1`
     align-items: center;
     height: 100%;
     margin: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     
 
     cursor: pointer;
     transition: transform 0.2s ease-in-out; /* Suaviza la animación */
 
     &:hover {
-        box-shadow: inset 0 -13px 0  #ffffff;
-    }
+        text-decoration: underline;
+        text-underline-offset: 5px;
+}
+
 `
 
 const BoxBase = styled.h3`
@@ -61,12 +79,19 @@ const BoxBase = styled.h3`
     width: 10%;
     margin: 0;
     color: white;
-    
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 12px 0 12px;
+
     cursor: pointer;
     transition: transform 0.2s ease-in-out; /* Suaviza la animación */
 
     &:hover {
-        box-shadow: inset 0 -13px 0  #ffffff;
+        text-decoration: underline;
+        text-decoration-thickness: 3px;
+        text-underline-offset: 5px;
     }
 `
 
