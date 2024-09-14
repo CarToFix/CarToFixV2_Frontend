@@ -13,6 +13,11 @@ top: 20px;
 left: 50%;    //Centra de forma horizontal
 transform: translateX(-50%); //Centra de forma horizontal
 width: 75%;
+
+@media (max-width: 1100px) {
+    width: 95%;
+    top: 55px;
+}
 `
 const TextInformation = styled.h3`
 position: absolute;
@@ -25,6 +30,12 @@ margin: 0;
 text-align: center;
 color: #2C518D;
 font-family: "Inter", sans-serif;
+
+ @media (max-width: 1100px) {
+    font-size: 2vh;
+    width: 75%;
+    text-align: center;
+  }
 `
 const Number = styled.h3 `
 position: absolute;
@@ -37,12 +48,17 @@ margin: 0;
 text-align: center;
 color: #2C518D;
 font-family: "Inter", sans-serif;
+
+@media (max-width: 1100px) {
+  font-size: 40px;
+  bottom: 30%;
+}
 `
 export default function AddictionalData({title, level}) {
     return (
         <DivSvg>
             <ImageSVG src={IconsDashboard} alt="IconsDashboard"/>
-            <Number>{level}</Number>
+            <Number>{level}5</Number>
         <TextInformation>{title}</TextInformation>
     </DivSvg>
     )

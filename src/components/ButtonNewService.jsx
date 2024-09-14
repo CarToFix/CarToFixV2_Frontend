@@ -21,6 +21,11 @@ border-radius: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
+
+@media (max-width: 1300px) {
+	width: 6vw;
+	height: 6vw;
+}
 `
 const Icon = styled(IoIosAdd)`
 color: #ffffff;
@@ -28,13 +33,13 @@ font-size: 6vw;
 `
 
 export default function NewserviceButton() {
-    return (
-        <ButtonContainer >
-            <TextOfCursor text='Nuevo presupuesto'>
-                <ServiceButton>
-                    <Icon icon={IoIosAdd}/>
-                </ServiceButton>
-            </TextOfCursor>
-        </ButtonContainer>
-    )
+	return (
+			<ButtonContainer >
+					<TextOfCursor text='Nuevo presupuesto'>
+							<ServiceButton>
+									<Icon icon={IoIosAdd}/>
+							</ServiceButton>
+					</TextOfCursor>
+			</ButtonContainer>
+	)
 }

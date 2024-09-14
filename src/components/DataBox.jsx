@@ -25,6 +25,11 @@ top: 0;
 z-index: 1;
 border-bottom: 12px solid transparent;
 font-size: 17px;
+
+@media (max-width: 1100px) {
+  font-size: 15px;
+  border-bottom: 10px solid transparent;
+}
 `
 // Estiliza el cuerpo de la tabla
 const StyledTBody = styled.tbody`

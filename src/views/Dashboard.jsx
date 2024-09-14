@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import styled from 'styled-components';
 import Databox from "../components/DataBox";
 import NewserviceButton from "../components/ButtonNewService";
 import AddictionalData from "../components/AddictionalData";
-import axios from 'axios';
-
+ 
 const Headers = styled.div `
 width: 100vw;
 height: 12%;
@@ -45,6 +44,12 @@ align-items: center;
 justify-content: center;
 padding-top: 5px;
 padding-bottom: 5px;
+
+@media (max-width: 1100px) {
+  font-size: 6vh;
+  margin-right: 50px;
+  margin-left: 50px;
+}
 `
 const DivTableActiveService = styled.div `
 display: flex;
@@ -79,6 +84,10 @@ margin: 5% 4%;
 display: flex;
 align-items: center;
 justify-content: center;
+
+ @media (max-width: 1100px) {
+    font-size: 4vh;
+  }
 `
 const DivTableRecentConfirmations = styled.div `
 display: flex;
@@ -129,26 +138,6 @@ const confirm = [
 
 
 export default function Dashboard() {
-
-const baseURL = 'https://static-clementine-krasnikot-100f316b.koyeb.app'
-const [dashboardData, setDashboardData] = useState([])
-
-useEffect(()=> {
- // const WorkshopName = localStorage.getItem('workshop_name')
-  
-  const WorkshopName = 'kjh'
-  
-  if (WorkshopName) {
-    axios.get(`${baseURL}/api/v1/dashboard/recent_confirmed_workshop_quote_tasks?workshop_name=${WorkshopName}`)
-    .then((res) => {
-      if (res) {
-        setDashboardData(res.data)
-        console.log("dashboard data", dashboardData)
-    }}
-  
-  )}})
-  
-
 
 return (
   <div>
