@@ -1,12 +1,14 @@
-import React from "react";
+import React,{ useState } from "react";
 import styled from "styled-components";
-import edit from "../assets/Icons/edit.svg"
-import { FaX } from "react-icons/fa6";
+import edit from "../assets/Icons/edit.svg";
+import AccountInitials from "../components/Initials";
+import { FaXmark } from "react-icons/fa6";
+import ModalNewPassword from "../components/ModalNewPassword";
 
 const Headers = styled.div `
 width: 100vw;
-height: 12%;
-background: linear-gradient(3deg, #23406D, #335FA6);
+height: 10%;
+background: linear-gradient(70deg, #23406D, #335FA6);
 position: fixed;
 top:0;
 
@@ -14,7 +16,7 @@ display: flex;
 justify-content: flex-end;
 align-items: center;
 `
-const IconX = styled(FaX)`
+const IconX = styled(FaXmark)`
 width: 4vh;
 margin-right: 20px;
 color: white;
@@ -49,8 +51,8 @@ align-items: center;
 width: 95%;
 height: 100%;
 `
-const Title = styled.h1
-`font-family: "inter", sans-serif;
+const Title = styled.h1`
+font-family: "inter", sans-serif;
 font-size: 43px;
 align-self: flex-start;
 padding-left: 20px;
@@ -73,6 +75,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+
 
  @media (max-width: 1300px) {
     width: 35%;
@@ -120,6 +123,14 @@ align-items: center;
 justify-content: space-between;
 padding-left: 10px;
 `
+const Edit = styled.input`
+background-color: #BABABA;
+height: 93%;
+width: 100%;
+border-radius: 15px;
+border: none;
+outline: none;
+`
 const TitleInfo = styled.h3`
 width: 20%;
 margin: 0;
@@ -132,19 +143,6 @@ width: 4%;
 margin-right: 10px;
 cursor: pointer;
 `
-// Para foto de perfil
-const Photo = styled.div`
-background: linear-gradient(90deg, #335FA6, #23406D);
-width: 14vw;
-height: 14vw;
-border-radius: 100%;
-border: 4px solid white;
-
- @media (max-width: 1000px) {
-    width: 15vw;
-    height: 15vw;
-  }
-`
 // nombre CarToFix
 const CarToFix = styled.h1`
 color: #2C518D;
@@ -156,65 +154,190 @@ font-size: 40px;
   }
 `
 export default function Settings() {
-  return (
-    <OtherContainer>
-      <Headers>
-        <IconX/>
-      </Headers>
-      <MainContainer>
-        <Column>
-          <Title>CONFIGURACION DEL TALLER</Title>
-          <Container>
-            <Row>
-              <Profile>
-                <Photo>
-                </Photo>
-                <CarToFix> CarToFix</CarToFix>
-              </Profile>
-              <InformationGeneral>
-                <DivInfo>
-                  <RowInfo>
-                  <TitleInfo>Correo</TitleInfo>
-                  <Box>correo_del_tallero_o_dueño@gmail.com
-                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
-                  </Box>
-                  </RowInfo>
-                  <RowInfo>
-                  <TitleInfo>Dueño</TitleInfo>
-                  <Box>Francisco
-                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
-                  </Box>
-                  </RowInfo>
-                  <RowInfo>
-                  <TitleInfo>Ciudad</TitleInfo>
-                  <Box>Canelones
-                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
-                  </Box>
-                  </RowInfo>
-                  <RowInfo>
-                  <TitleInfo>Dirección</TitleInfo>
-                  <Box>La Paz, Treinta y tres 562
-                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
-                  </Box>
-                  </RowInfo>
-                  <RowInfo>
-                  <TitleInfo>Contraseña</TitleInfo>
-                  <Box>********
-                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
-                  </Box>
-                  </RowInfo>
-                  <RowInfo>
-                  <TitleInfo>Celular</TitleInfo>
-                  <Box>095 555 555
-                    <ImagenEditSVG src={edit} alt="edit" role="button"/>
-                  </Box>
-                  </RowInfo>
-                </DivInfo>
-              </InformationGeneral>
-            </Row>
-          </Container>
-        </Column>
-      </MainContainer>
-    </OtherContainer>
-  )
+  const username = 'emily sanchez';
+  const openModal = () => setisOpenModal(true);
+  const closeModal = () => setisOpenModal(false);
+
+  const [Editconfiguration, setEditconfiguration] = useState({
+    email: 'emi@gmail.com',
+    dueño: 'Emily',
+    ciudad: 'Canelones',
+    direccion: 'Las Piedras, julio sosa 555',
+    celular: '095 555 555',
+  });
+
+  const [IsEdit, setIsEdit] = useState(null);
+  // funcion para los cambios de la edicion
+  const handleinput = (e, field) => {
+    setEditconfiguration({ ...Editconfiguration, [field]: e.target.value });
+  };
+  // funcion para el click en el icono edit
+  const handleEditClick = (field) => {
+    setIsEdit(field);
+  };
+  // para guardar al precionar enter
+  const SaveEnter = (e) => {
+    if(e.key === 'Enter') {
+      setIsEdit(false)
+    }
+  }
+  // para guardar la nueva contraseña
+  const [Password, setPassword] = useState('');
+  // Para el modal de cambiar contraseña
+  const [isOpenModal, setisOpenModal] = useState(false);
+
+  const SavePassword = (newPassword) => {
+    setPassword(newPassword); //Guarda la contraseña
+  }
+
+return (
+  <OtherContainer>
+    <Headers>
+      <IconX/>
+    </Headers>
+    <MainContainer>
+      <Column>
+        <Title>CONFIGURACION DEL TALLER</Title>
+        <Container>
+          <Row>
+            <Profile>
+              <AccountInitials name={username}/>
+              <CarToFix> CarToFix</CarToFix>
+            </Profile>
+            <InformationGeneral>
+              <DivInfo>
+                <RowInfo>
+                <TitleInfo>Correo</TitleInfo>
+                <Box>
+                  {IsEdit === 'email' ? (
+                    <Edit
+                    type="email"
+                    value={Editconfiguration.email}
+                    onChange={(e) => handleinput(e, 'email')}
+                    onKeyDown={SaveEnter}
+                    />
+                  ) : (
+                    <>
+                    {Editconfiguration.email}
+                    <ImagenEditSVG
+                      src={edit}
+                      alt="edit"
+                      role="button"
+                      onClick={() => handleEditClick('email')}/>
+                    </>
+                  )}
+                </Box>
+                </RowInfo>
+                <RowInfo>
+                <TitleInfo>Dueño</TitleInfo>
+                <Box>{IsEdit === 'dueño' ? (
+                    <Edit type="text"
+                      value={Editconfiguration.dueño}
+                      onChange={(e) => handleinput(e, 'dueño')}
+                      onKeyDown={SaveEnter}
+                    />
+                  ) : (
+                    <>
+                    {Editconfiguration.dueño}
+                    <ImagenEditSVG
+                      src={edit}
+                      alt="edit"
+                      role="button"
+                      onClick={() => handleEditClick('dueño')}
+                      autoFocus
+                      />
+                    </>
+                  )}
+                </Box>
+                </RowInfo>
+                <RowInfo>
+                <TitleInfo>Ciudad</TitleInfo>
+                <Box>
+                {IsEdit === 'ciudad' ? (
+                    <Edit type="text"
+                      value={Editconfiguration.ciudad}
+                      onChange={(e) => handleinput(e, 'ciudad')}
+
+                      onKeyDown={SaveEnter}
+                    />
+                  ) : (
+                    <>
+                    {Editconfiguration.ciudad}
+                    <ImagenEditSVG
+                      src={edit}
+                      alt="edit"
+                      role="button"
+                      onClick={() => handleEditClick('ciudad')}/>
+                    </>
+                  )}
+                </Box>
+                </RowInfo>
+                <RowInfo>
+                <TitleInfo>Dirección</TitleInfo>
+                <Box>
+                {IsEdit === 'direccion' ? (
+                    <Edit type="text"
+                    value={Editconfiguration.direccion}
+                    onChange={(e) => handleinput(e, 'direccion')}
+                    onKeyDown={SaveEnter}
+                    />
+                  ) : (
+                    <>
+                    {Editconfiguration.direccion}
+                    <ImagenEditSVG
+                      src={edit}
+                      alt="edit"
+                      role="button"
+                      onClick={() => handleEditClick('direccion')}/>
+                    </>
+                  )}
+                </Box>
+                </RowInfo>
+                <RowInfo>
+                <TitleInfo>Contraseña</TitleInfo>
+                <Box>
+                  {Password ? '*'.repeat(Password.length) : 'c'}
+                  <ImagenEditSVG 
+                    src={edit}
+                    alt="edit"
+                    role="button"
+                    onClick={openModal}/>
+                </Box>
+                {isOpenModal && (
+                  <ModalNewPassword 
+                    onSave={SavePassword} // pasa la funcion al modal
+                    isOpen={isOpenModal}
+                    onClose={closeModal} />
+                  )}
+                </RowInfo>
+                <RowInfo>
+                <TitleInfo>Celular</TitleInfo>
+                <Box>
+                {IsEdit === 'celular' ? (
+                    <Edit type="text"
+                    value={Editconfiguration.celular}
+                    onChange={(e) => handleinput(e, 'celular')}
+                    onKeyDown={SaveEnter}
+                    />
+                  ) : (
+                    <>
+                    {Editconfiguration.celular}
+                    <ImagenEditSVG
+                      src={edit}
+                      alt="edit"
+                      role="button"
+                      onClick={() => handleEditClick('celular')}/>
+                    </>
+                  )}
+                </Box>
+                </RowInfo>
+              </DivInfo>
+            </InformationGeneral>
+          </Row>
+        </Container>
+      </Column>
+    </MainContainer>
+  </OtherContainer>
+  
+)
 }
