@@ -24,7 +24,7 @@ const Header = () => {
         <Box6 onClick={toggleSettings}><img src={ajustesIcon} alt="Ajustes" /></Box6>
         </HeaderContainer>
 
-        {showSettings && <Settings />}
+        {showSettings && <Settings onClose={toggleSettings} />}
     </>
   );
 };

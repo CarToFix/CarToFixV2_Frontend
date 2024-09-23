@@ -1,17 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import XIcon from '../assets/X.svg';
 
 
-const Settings = () => {
+const Settings = ({ onClose }) => {
     return(
         <Settings_Container>
             <Box1>
-                <h3>X</h3>
+                <CloseButton onClick={onClose}>
+                <img src={XIcon} alt="Cerrar" />
+                </CloseButton>
             </Box1>
             <Box2>
-                <h3>Configuración del taller</h3>
-                <h3>Gestion de usuarios</h3>
-                <h3>Contactanos</h3>
+                <h3 style={{ cursor: 'pointer' }} onClick={() => console.log("Configuración del taller")}>Configuración del taller</h3>
+                <h3 style={{ cursor: 'pointer' }} onClick={() => console.log("Gestión de usuarios")}>Gestión de usuarios</h3>
+                <h3 style={{ cursor: 'pointer' }} onClick={() => console.log("Contáctanos")}>Contáctanos</h3>
             </Box2>
             <Box3>
                 <h2>Cerrar Sesión</h2>
@@ -33,17 +36,35 @@ const Settings_Container = styled.div`
     min-width: 20vw;
     background-color: #ffffff;
     border: 3px solid #2C518D;
-    border-radius: 10px;
+    border-right: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     position: fixed; /* Posiciona el modal arriba del resto de elementos */
     z-index: 1000; /* Mantiene el modal sobre cualquier elemento */ 
-    left: 0;
+    right: 0;
 `
 
 const Box1 = styled.div`
+    display: flex;
+    align-items: center;
+    
+
     height: 10vh;
     width: 100%;
-    background-color: pink;
+    
 `
+
+const CloseButton = styled.button`
+    background: none;
+    border: none;
+    padding-left: 40px;
+    cursor: pointer;
+    img {
+        width: 20px; /* Ajusta el tamaño como necesites */
+        height: 20px;
+    }
+`;
+
 
 const Box2 = styled.div`
     display: flex;
@@ -55,6 +76,7 @@ const Box2 = styled.div`
    
     background-color: #ffffff;
     color: #2C518D;
+    
 `
 
 const Box3 = styled.div`
@@ -64,6 +86,7 @@ const Box3 = styled.div`
 
     height: 10vh;
     width: 100%;
+    border-bottom-left-radius: 15px;
     background: linear-gradient(70deg, #23406D, #335FA6);
     color: white;
     padding-bottom: 0px;
