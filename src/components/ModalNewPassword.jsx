@@ -21,7 +21,7 @@ const MainContainer = styled.div `
 display: flex;
 flex-direction: column;
 width: 36vw;
-height: 36vh;
+height: 42vh;
 gap: 0.5%;
 background: #D9D9D9;
 border-radius: 10px;
@@ -32,7 +32,7 @@ box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
   }
 `
 const DivIcon = styled.div`
-height: 15%;
+height: 12%;
 display: flex;
 justify-content: flex-end;
 align-items: center;
@@ -70,7 +70,7 @@ height: 55%;
 const Column = styled.div`
 display: flex;
 flex-direction: column;
-height: 70%;
+height: 96%;
 `
 const Row = styled.div`
 display: flex;
@@ -129,7 +129,7 @@ width: 20%;
 height: 65%;
 background: #2C518D;
 color: white;
-border-radius: 10px;
+border-radius: 18px;
 border: none;
 box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -154,15 +154,19 @@ const ErrorMessage = styled.p`
   text-align: center;
 `;
 export default function ModalNewPassword({isOpen, onClose, onSave}) {
+  const [Currrent, setCurrent] = useState(''); //contraseña actual
   const [password, setpassword] = useState(''); // para Nueva contraseña
   const [confirmPassword, setconfirmPassword] = useState(''); // para confirmar contraseña
   const [error, setError] = useState('') // por si las contraseñas no coinciden
   const PasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; // es es para que tenga al menos una letra en minuscula, al menos una en mayuscula, por lo menos un numero y contenga un minimo de 8 caracteres
 
   // Para que la contraseña sea visible o no lo sea
+  const [Currentpassword, setcurrentpassword] = useState(false);
   const [showpassword, setshowpassword] = useState(false);
   const [ShowRepeatPassword, setShowRepeatPassword] = useState(false);
-
+  const ChangePasswordCurrent = (e) => {
+    setCurrent(e.target.value);
+  }
   const ChangePassword = (e) => {
     setpassword(e.target.value);
   }
@@ -188,6 +192,9 @@ export default function ModalNewPassword({isOpen, onClose, onSave}) {
   }
 };
 // para que la contraseña sea visible o no
+const CurrentPasswordVisibility = () => {
+  setcurrentpassword(!Currentpassword)
+}
 const PasswordVisibility = () => {
   setshowpassword(!showpassword)
 }
@@ -208,6 +215,20 @@ return (
           <TitlePassword>Cambiar contraseña</TitlePassword>
           <Box>
             <Column>
+              <Row>
+                <TitleNewPassword>Contaseña actual</TitleNewPassword>
+                <BoxPassword>
+                  <Edit
+                    value={Currrent}
+                    type={Currentpassword ? 'text' : 'password'}
+                    onChange={ChangePasswordCurrent}/>
+                  {Currentpassword ? (
+                    <IconEye onClick={CurrentPasswordVisibility}/>
+                  ) : (
+                    <IconEyeClosed onClick={CurrentPasswordVisibility}/>
+                  )}
+                </BoxPassword>
+              </Row>
               <Row>
                 <TitleNewPassword>Nueva contaseña</TitleNewPassword>
                 <BoxPassword>
