@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SearchOutlined, UnorderedListOutlined, AppstoreFilled } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
+import List from '../assets/listas.png';
+import Cards from '../assets/tarjetas.png';
 
 const FirstDiv = styled.div`
   display: flex;
@@ -53,6 +55,10 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  img {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 const TitleSearch = ({ isTilesView, onToggleView }) => {
@@ -70,7 +76,7 @@ const TitleSearch = ({ isTilesView, onToggleView }) => {
           <SearchOutlined className="search-icon" />
         </SearchContainer>
         <Button onClick={onToggleView}>
-          {isTilesView ? <UnorderedListOutlined /> : <AppstoreFilled />}
+          {isTilesView ? <img src={List} alt="List view" /> : <img src={Cards} alt="Cards view" />}
         </Button>
       </SearchList>
     </FirstDiv>

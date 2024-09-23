@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { tileData } from '../data/data';
+import { vehicleData } from '../data/data';
+import Modal from './ModalDetail';
 
 const SecondDiv = styled.div`
   display: grid;
@@ -15,7 +16,7 @@ const SecondDiv = styled.div`
     width: 15px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #BABABA;
+    background: #D9D9D9;
     border-radius: 8px;
   }
   &::-webkit-scrollbar-track {
@@ -40,6 +41,7 @@ const Tile = styled.div`
 
 const TileContent = styled.ul`
   font-size: 20px;
+  list-style: none;
   list-style-position: inside;
   color: #2F2E2E;
   padding: 0;
@@ -87,24 +89,37 @@ const TileButtonContainer = styled.div`
 `;
 
 const Tiles = () => {
+  const [selectedTileId, setSelectedTileId] = useState(null);
+  const openModal = (id) => {
+    setSelectedTileId(id);
+  };
+  const closeModal = () => {
+    setSelectedTileId(null);
+  };
+  const tile = vehicleData.find(tile => tile.id === selectedTileId);
+
   return (
-    <SecondDiv>
-      {tileData.map(({ id, brand, model, plate, services, lastService }) => (
-        <Tile key={id}>
-          <TileHeader>{brand}</TileHeader>
-          <TileContent>
-            {model && <TileContentItem> Modelo: <TileTextBold>{model}</TileTextBold></TileContentItem>}
-            {plate && <TileContentItem> Matricula: <TileTextBold>{plate}</TileTextBold></TileContentItem>}
-            {services && <TileContentItem> Servicios: <TileTextBold>{services}</TileTextBold></TileContentItem>}
-            {lastService && <TileContentItem> Ult. Servicio: <TileTextBold>{lastService}</TileTextBold></TileContentItem>}
-          </TileContent>
-          <TileButtonContainer>
-            <button>Ver</button>
-          </TileButtonContainer>
-        </Tile>
-      ))}
-    </SecondDiv>
+    <>
+      <SecondDiv>
+        {vehicleData.map(({ id, brand, model, plate, services, lastService }) => (
+          <Tile key={id}>
+            <TileHeader>{brand}</TileHeader>
+            <TileContent>
+              {model && <TileContentItem> Modelo: <TileTextBold>{model}</TileTextBold></TileContentItem>}
+              {plate && <TileContentItem> Matricula: <TileTextBold>{plate}</TileTextBold></TileContentItem>}
+              {services && <TileContentItem> Servicios: <TileTextBold>{services}</TileTextBold></TileContentItem>}
+              {lastService && <TileContentItem> Ult. Servicio: <TileTextBold>{lastService}</TileTextBold></TileContentItem>}
+            </TileContent>
+            <TileButtonContainer>
+              <button onClick={() => openModal(id)}>Ver</button>
+            </TileButtonContainer>
+          </Tile>
+        ))}
+      </SecondDiv>
+      {selectedTileId && (
+        <Modal onClose={closeModal} info={tile} />
+      )}
+    </>
   );
 };
-
 export default Tiles;

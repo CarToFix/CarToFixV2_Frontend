@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import HeaderTable from './TableHeader';
 import BodyTable from './TableBody';
+import Modal from './ModalDetail';
+import { vehicleData } from '../data/data';
 
 const SecondDiv = styled.div`
   height: 90%;
@@ -20,13 +22,24 @@ const StyledTable = styled.table`
 `;
 
 const GenerarTable = () => {
-
+  const [selectedTableId, setSelectedTileId] = useState(null);
+  const openModal = (id) => {
+    setSelectedTileId(id);
+  };
+  const closeModal = () => {
+    setSelectedTileId(null);
+  };
+  const table = vehicleData.find(table => table.id === selectedTableId);
+  console.log(table)
   return (
     <SecondDiv>
       <StyledTable>
         <HeaderTable />
-        <BodyTable />
+        <BodyTable onButtonClick={openModal} />
       </StyledTable>
+      {selectedTableId && (
+        <Modal onClose={closeModal} info={table} />
+      )}
     </SecondDiv>
   );
 };

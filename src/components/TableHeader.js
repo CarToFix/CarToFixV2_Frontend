@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { tableData } from '../data/data';
+import { vehicleData } from '../data/data';
 
 const StyledThead = styled.thead`
   display: grid;
@@ -9,7 +9,7 @@ const StyledThead = styled.thead`
   top: 0;
   z-index: 1;
   border-bottom: 12px solid transparent;
-  font-size: 20px;
+  font-size: 25px;
 `;
 
 const StyledTr = styled.tr` 
@@ -22,19 +22,21 @@ const StyledTr = styled.tr`
 
 const StyledTh = styled.th`
   flex: 1; 
-  padding: 5px;
-  padding-left: 15px;
-  text-align: left;
+  padding: 7px 0 7px 0;
+  text-align: center;
   color: #2C518D;
   border: 1px solid transparent;
-  background-color: #C9C9C9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #BABABA;
   &:first-child {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
   }
   &:last-child {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
   }
   position: relative;
   &:not(:first-child)::before {
@@ -49,7 +51,6 @@ const StyledTh = styled.th`
 `;
 
 const HeaderTable = () => {
-
   const headerMappings = {
     brand: 'Marca',
     model: 'Modelo',
@@ -57,11 +58,9 @@ const HeaderTable = () => {
     services: 'Servicios',
     lastService: 'Ult. Servicio',
   };
-
-  const columns = Object.keys(tableData[0])
-    .filter((key) => key !== 'id')
+  const columns = Object.keys(vehicleData[0])
+    .filter((key) => key in headerMappings)
     .map((key) => ({ displayName: headerMappings[key] }));
-
   return (
     <StyledThead>
       <StyledTr>
