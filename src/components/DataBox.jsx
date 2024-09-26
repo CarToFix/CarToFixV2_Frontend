@@ -27,7 +27,7 @@ border-bottom: 12px solid transparent;
 font-size: 17px;
 
 @media (max-width: 1100px) {
-  font-size: 15px;
+  font-size: 14.5px;
   border-bottom: 10px solid transparent;
 }
 `

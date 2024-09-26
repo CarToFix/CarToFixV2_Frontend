@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
+// Estilos para el div que sigue al cursor cuando está sobre el elemento
 const DivCursor = styled.div`
 font-family: "inter", sans-serif;
 background-color: #E67E22;
@@ -25,10 +26,11 @@ border-color: #e67e22 transparent transparent transparent;
 `
 
 export default function TextOfCursor({text, children}) {
-
+// Estado para controlar si el cursor está sobre el elemento
 const [above, setabove] = useState(false);
 
 return (
+  // Cuando el mouse entra en el área, muestra el tooltip; cuando sale, lo oculta
   <div onMouseEnter={() => setabove(true)}
   onMouseLeave={() => setabove(false)}>
     {children}

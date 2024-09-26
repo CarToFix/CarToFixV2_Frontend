@@ -10,7 +10,7 @@ position: fixed;
 bottom: 0;
 right: 0;
 `
-const ServiceButton = styled.div `
+const BudgetButton = styled.div `
 position: absolute;
 right: 2vh;
 bottom: 2vh;
@@ -32,13 +32,13 @@ color: #ffffff;
 font-size: 6vw;
 `
 
-export default function NewserviceButton() {
+export default function NewBudgetButton() {
 	return (
 			<ButtonContainer >
 					<TextOfCursor text='Nuevo presupuesto'>
-							<ServiceButton>
+							<BudgetButton>
 									<Icon icon={IoIosAdd}/>
-							</ServiceButton>
+							</BudgetButton>
 					</TextOfCursor>
 			</ButtonContainer>
 	)
