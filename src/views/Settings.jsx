@@ -167,7 +167,7 @@ height: 20%;
 width: 53%;
 display: flex;
 flex-direction: row;
-justify-content: flex-end;
+justify-content: center;
 align-items: center;
 `
 // nombre taller
@@ -247,18 +247,16 @@ return (
             <Profile>
               <AccountInitials name={username}/>
               <DivName>
-                <NameTaller>NameTaller</NameTaller>
-                <IconEditName
-                  onClick={openNameModal}/>
-
+                <NameTaller>{UpdateName}</NameTaller>
+                <IconEditName onClick={openNameModal}/>
+              </DivName>
               {isNameModalOpen && (
                 <ModalUpdateName
                   isOpen={isNameModalOpen}
-                  onSave={SaveName} // pasa la funcion al modal
-                  onClose={closeNameModal} 
-                  CurrentName={UpdateName}/>
+                  CurrentName={UpdateName} // Se pasa el nombre actual al modal
+                  onSave={SaveName} // pasa la funcion que guarda al modal 
+                  onClose={closeNameModal}/>
                 )}
-              </DivName>
             </Profile>
             <InformationGeneral>
               <DivInfo>

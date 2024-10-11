@@ -19,7 +19,7 @@ const MainContainer = styled.div `
 display: flex;
 flex-direction: column;
 width: 36vw;
-height: 28vh;
+height: 26vh;
 gap: 0.5%;
 background: #D9D9D9;
 border-radius: 10px;
@@ -30,13 +30,6 @@ position: relative;
     width: 66vw;
   }
 `
-const DivIcon = styled.div`
-height: 12%;
-display: flex;
-justify-content: flex-end;
-align-items: center;
-cursor: pointer;
-`
 const IconX = styled(FaXmark)`
 width: 3vh;
 height: 3vh;
@@ -45,10 +38,11 @@ padding-right: 5px;
 position: absolute;
 top: 0;
 right: 0;
-padding-top: 5px;
+padding-top: 8px;
+cursor: pointer;
 `
 const Container = styled.div`
-height: 90%;
+height: 82%;
 width: 100%;
 display: flex;
 align-items: flex-start;
@@ -70,28 +64,14 @@ margin-bottom: 25px;
 `
 const Box = styled.div`
 width: 100%;
-height: 46%;
+height: 25%;
 `
 const Column = styled.div`
 display: flex;
 flex-direction: column;
 height: 80%;
 `
-const CurrentNameLabel = styled.h1`
-font-family: "inter", sans-serif;
-font-size: 16px;
-color: black;
-margin-bottom: 8px;
-margin-top: 8px;
-font-weight: 100;
-`
-const CurrentNameValue = styled.p`
-  font-family: "inter", sans-serif;
-  font-size: 16px;
-  color: black;
-  margin: 0;
-`;
-const BoxUpdateName = styled.div`
+const BoxUpdateName = styled.input`
 height: 100%;
 background-color: #BABABA;
 border-radius: 9px;
@@ -103,18 +83,12 @@ padding-left: 10px;
 const ColumnButtom = styled.div`
 display: flex;
 justify-content: flex-end;
+align-items: flex-end;
 height: 24%;
-`
-const RowButtom = styled.div`
-display: flex;
-justify-content: flex-end;
-align-items: center;
-height: 100%;
-width: 100%;
 `
 const ButtonSave = styled.button`
 width: 20%;
-height: 60%;
+height: 65%;
 background: #2C518D;
 color: white;
 border-radius: 18px;
@@ -149,8 +123,6 @@ export default function ModalUpdateName({isOpen, onClose, onSave, CurrentName}) 
             <TitleUpdateName>Cambiar nombre</TitleUpdateName>
             <Box>
               <Column>
-                <CurrentNameLabel>Nombre actual:</CurrentNameLabel>
-                <CurrentNameValue>{CurrentName}</CurrentNameValue>
                 <BoxUpdateName
                   type='text'
                   value={NewName}
