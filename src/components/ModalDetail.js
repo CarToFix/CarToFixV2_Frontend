@@ -1,6 +1,7 @@
 /**
- * This component is resposible of rendering the modal with a better view and more details about the work
+ * This component render the modal with more and better information than tables and tiles
  */
+
 import React from 'react';
 import styled from 'styled-components';
 import { CloseOutlined } from '@ant-design/icons';
@@ -21,8 +22,8 @@ const ModalOverlay = styled.div`
 
 const ModalContainer = styled.div`
   background-color: #D9D9D9;
-  width: 65vw;
-  height: 48vh;
+  width: 45vw;
+  height: 40vh;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
@@ -44,8 +45,9 @@ const CloseButton = styled.button`
 `;
 
 const ModalHeader = styled.h1`
-  text-align: left;
+  text-align: center;
   padding-left: 20px;
+  font-size: 40px;
   color: #2C518D;
   margin: 5px 0 20px 0;
 `;
@@ -71,7 +73,7 @@ const Field = styled.div`
 `;
 
 const Label = styled.span`
-  flex: 1;
+  flex: 1 1 33%; 
   font-size: 20px;
   white-space: nowrap;
   overflow: hidden;
@@ -79,7 +81,7 @@ const Label = styled.span`
 `;
 
 const Value = styled.span`
-  flex: 1;
+  flex: 2 1 67%; 
   background-color: #BABABA;
   padding: 8px 15px;
   border-radius: 15px;
@@ -87,46 +89,6 @@ const Value = styled.span`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-`;
-
-const InspectionField = styled.div`
-  margin-bottom: 10px;
-  font-size: 16px;
-`;
-
-const InspectionLabel = styled.span`
-  font-size: 20px;
-  margin-bottom: 8px;
-  display: block;
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis;
-`;
-
-const InspectionValue = styled.div`
-  background-color: #BABABA;
-  padding: 15px;
-  border-radius: 15px;
-  text-align: left;
-  height: 160px; 
-  white-space: pre-wrap; 
-  overflow-y: auto; 
-`;
-
-const SaveButton = styled.button`
-  font-family: "Inter", sans-serif;
-  background-color: #2C518D;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  width: 15%;
-  min-width: 100px;
-  padding: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-left: auto;
-  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.3);
-  display: block;
 `;
 
 const DetailItem = ({ label, value }) => (
@@ -141,31 +103,21 @@ const Modal = ({ onClose, info }) => {
     <ModalOverlay onClick={onClose}>
       <ModalContainer onClick={e => e.stopPropagation()}>
         <ModalHeader>
-          <span>Datos del Vehículo</span>
+          <span> Trabajo</span>
           <CloseButton onClick={onClose}>
             <CloseOutlined />
           </CloseButton>
         </ModalHeader>
         <ContentWrapper>
           <Column>
+            <DetailItem label="Vehiculo" value={`${info.brand} - ${info.model}`} />
             <DetailItem label="Matricula" value={info.plate} />
-            <DetailItem label="Tipo de Vehículo" value={info.typeVehicle} />
-            <DetailItem label="Marca" value={info.brand} />
-            <DetailItem label="Modelo" value={info.model} />
-            <DetailItem label="Color" value={info.color} />
-            <DetailItem label="Kilometraje" value={info.kilometraje} />
-            <DetailItem label="Propietario" value={info.owner} />
-          </Column>
-          <Column>
-            <DetailItem label="Mail de Contacto" value={info.mail} />
-            <DetailItem label="Número de Contacto" value={info.number} />
-            <InspectionField>
-              <InspectionLabel>Inspección Vehicular:</InspectionLabel>
-              <InspectionValue>{info.inspeccion}</InspectionValue>
-            </InspectionField>
+            <DetailItem label="Empleado" value={info.employee} />
+            <DetailItem label="Respuesto" value={info.sparePart} />
+            <DetailItem label="Descripcion" value={info.description} />
+            <DetailItem label="Estado" value={info.status} />
           </Column>
         </ContentWrapper>
-        <SaveButton>Guardar</SaveButton>
       </ModalContainer>
     </ModalOverlay>
   );
