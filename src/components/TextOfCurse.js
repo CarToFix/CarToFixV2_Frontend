@@ -1,3 +1,7 @@
+/**
+ * This component is a complement of ButtonNewService
+ */
+
 import React, { useState } from "react";
 import styled from "styled-components";
 

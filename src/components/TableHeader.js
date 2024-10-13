@@ -1,6 +1,10 @@
+/**
+ * This component is the header of the table 
+ */
+
 import React from 'react';
 import styled from 'styled-components';
-import { spareParts } from '../../data/data';
+import { spareParts } from '../data/data';
 
 const StyledThead = styled.thead`
   display: grid;

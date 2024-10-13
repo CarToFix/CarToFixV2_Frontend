@@ -1,3 +1,6 @@
+/**
+ * This component renders the + button.
+ */
 import React from "react";
 import styled from "styled-components";
 import { IoIosAdd } from "react-icons/io";

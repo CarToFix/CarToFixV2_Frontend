@@ -1,3 +1,6 @@
+/**
+ * This component is resposible of rendering the modal with a better view and more details about the sparepart
+ */
 import React from 'react';
 import styled from 'styled-components';
 import { CloseOutlined } from '@ant-design/icons';

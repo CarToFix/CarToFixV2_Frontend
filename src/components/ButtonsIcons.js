@@ -1,8 +1,12 @@
+/**
+ * This component is responsible for dynamically render buttons 
+ * They dont have any real functions yet
+ */
 import React from 'react';
 import styled from 'styled-components';
-import SelectIcon from "../../assets/Seleccionar.svg";
-import MoveIcon from "../../assets/Mover.svg";
-import DeleteIcon from "../../assets/Papelera.svg";
+import SelectIcon from "../assets/Seleccionar.svg";
+import MoveIcon from "../assets/Mover.svg";
+import DeleteIcon from "../assets/Papelera.svg";
 
 const IconContainer = styled.div`
   display: flex;

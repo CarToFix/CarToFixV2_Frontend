@@ -1,3 +1,7 @@
+/**
+ * This component is the body of the table
+ */
+
 import React from 'react';
 import styled from 'styled-components';
 

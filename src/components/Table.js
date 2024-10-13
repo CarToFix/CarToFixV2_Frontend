@@ -1,9 +1,14 @@
+/**
+ * This component is the table that is render on the view 
+ * Also render the modal with the corresponding id
+ */
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import HeaderTable from './TableHeader';
 import BodyTable from './TableBody';
 import Modal from './ModalDetail';
-import { spareParts, sparePartsStock } from '../../data/data';
+import { spareParts, sparePartsStock } from '../data/data';
 import ButtonsIcons from './ButtonsIcons';
 
 const SecondDiv = styled.div`

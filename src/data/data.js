@@ -1,3 +1,6 @@
+/**
+ * This code is just data to fetch to test the code and will be replaced when db is available
+ */
 export const spareParts = [
   { id: '1', name: 'Filtro de aire', size: 'Pequeño', quantity: 15, description: 'Filtro de aire para motor de combustión interna.', date: '2023-11-02' },
   { id: '2', name: 'Bujía', size: 'Pequeño', quantity: 50, description: 'Componente que enciende la mezcla de aire y combustible en motores de gasolina.', date: '2023-01-01' },
