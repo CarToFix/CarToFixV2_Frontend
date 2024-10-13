@@ -1,3 +1,7 @@
+/**
+ * This component is responsible for having a search bar, filter and change from tiles or tables
+ * search bar and filter is not working at the moment 
+ */
 import React from 'react';
 import styled from 'styled-components';
 
