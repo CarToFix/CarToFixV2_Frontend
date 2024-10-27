@@ -1,14 +1,21 @@
+/**
+ * This component is responsible for having a search bar, filter and change from tiles or tables
+ * search bar and filter is not working at the moment 
+ */
+
 import React from 'react';
 import styled from 'styled-components';
 import { SearchOutlined } from '@ant-design/icons';
-import List from '../assets/listas.png';
-import Cards from '../assets/tarjetas.png';
+import List from '../../assets/listas.png';
+import Cards from '../../assets/tarjetas.png';
 
 const FirstDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 10%;
+  padding-bottom: 10px;
+  padding-left:10px;
 `;
 
 const Title = styled.h1`

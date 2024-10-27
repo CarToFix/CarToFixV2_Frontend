@@ -1,3 +1,7 @@
+/**
+ * This component render the modal with more and better information than tables and tiles
+ */
+
 import React from 'react';
 import styled from 'styled-components';
 import { CloseOutlined } from '@ant-design/icons';
@@ -108,6 +112,7 @@ const InspectionValue = styled.div`
   height: 160px; 
   white-space: pre-wrap; 
   overflow-y: auto; 
+  overflow-x: hidden;
 `;
 
 const SaveButton = styled.button`

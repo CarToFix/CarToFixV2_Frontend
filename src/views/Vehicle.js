@@ -1,9 +1,12 @@
+/**
+ * This is the main view
+ */
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import TitleSearch from '../components/TitleSearch';
-import Tiles from '../components/Tiles';
-import Table from '../components/Table';
-import AddButton from '../components/AddButton';
+import TitleSearch from '../components/vehicle/TitleSearch';
+import Tiles from '../components/vehicle/Tiles';
+import Table from '../components/vehicle/Table';
 
 const Container = styled.div`
   display: flex;
@@ -28,7 +31,6 @@ const Vehicle = () => {
       <Content>
         <TitleSearch isTilesView={isTilesView} onToggleView={toggleView} />
         {isTilesView ? <Tiles /> : <Table />}
-        <AddButton />
       </Content>
     </Container>
   );

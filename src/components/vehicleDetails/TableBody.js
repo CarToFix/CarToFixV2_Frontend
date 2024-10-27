@@ -1,6 +1,10 @@
+/**
+ * This component is the body of the table
+ */
 import React from 'react';
 import styled from 'styled-components';
-import { vehicleData } from '../data/data';
+import { useParams } from 'react-router-dom';
+import { vehicleDataWithDetails } from '../../data/data';
 
 const StyledTBody = styled.tbody`
   display: block;
@@ -31,7 +35,7 @@ const StyledTr = styled.tr`
 `;
 
 const StyledTd = styled.td`
-  flex: 1;
+  flex: ${(props) => props.flex}; 
   background-color: #BABABA;
   padding: 11px;
   padding-left: 15px;
@@ -77,23 +81,21 @@ const ButtonTable = styled.button`
 `;
 
 const BodyTable = ({ onButtonClick }) => {
-  const bodyMappings = {
-    brand: 'Marca',
-    model: 'Modelo',
-    plate: 'Matricula',
-    services: 'Servicios',
-    lastService: 'Ult. Servicio',
-  };
-  const columns = Object.keys(bodyMappings);
+  const { vehicleId } = useParams();
+  const vehicle = vehicleDataWithDetails.find((v) => v.id === vehicleId);
+  const columns = [
+    { field: 'date', label: 'Ingreso', flex: 1 },
+    { field: 'detail', label: 'Detalles', flex: 2 }
+  ];
 
   return (
     <StyledTBody>
-      {vehicleData.map(({ id, ...row }) => (
-        <StyledTr key={id}>
-          {columns.map(field => (
-            <StyledTd key={field}>{row[field]}</StyledTd>
+      {vehicle.works.map((work) => (
+        <StyledTr key={work.id}>
+          {columns.map(({ field, flex }) => (
+            <StyledTd key={field} flex={flex}>{work[field]}</StyledTd>
           ))}
-          <ButtonTable onClick={() => onButtonClick(id)}>Ver</ButtonTable>
+          <ButtonTable onClick={() => onButtonClick(work)}>Ver</ButtonTable>
         </StyledTr>
       ))}
     </StyledTBody>

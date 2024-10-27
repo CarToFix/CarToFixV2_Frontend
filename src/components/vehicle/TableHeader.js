@@ -1,6 +1,10 @@
+/**
+ * This component is the header of the table 
+ */
+
 import React from 'react';
 import styled from 'styled-components';
-import { vehicleData } from '../data/data';
+import { vehicleDataWithDetails } from '../../data/data';
 
 const StyledThead = styled.thead`
   display: grid;
@@ -58,7 +62,7 @@ const HeaderTable = () => {
     services: 'Servicios',
     lastService: 'Ult. Servicio',
   };
-  const columns = Object.keys(vehicleData[0])
+  const columns = Object.keys(vehicleDataWithDetails[0])
     .filter((key) => key in headerMappings)
     .map((key) => ({ displayName: headerMappings[key] }));
   return (

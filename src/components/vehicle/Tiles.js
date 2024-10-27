@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+/**
+ * This component is the one responsible for rendering the tiles 
+ */
+
+import React from 'react';
 import styled from 'styled-components';
-import { vehicleData } from '../data/data';
-import Modal from './ModalDetail';
+import { useNavigate } from 'react-router-dom';
+import { vehicleDataWithDetails } from '../../data/data';
 
 const SecondDiv = styled.div`
   display: grid;
@@ -89,19 +93,11 @@ const TileButtonContainer = styled.div`
 `;
 
 const Tiles = () => {
-  const [selectedTileId, setSelectedTileId] = useState(null);
-  const openModal = (id) => {
-    setSelectedTileId(id);
-  };
-  const closeModal = () => {
-    setSelectedTileId(null);
-  };
-  const tile = vehicleData.find(tile => tile.id === selectedTileId);
-
+  const navigate = useNavigate();
   return (
     <>
       <SecondDiv>
-        {vehicleData.map(({ id, brand, model, plate, services, lastService }) => (
+        {vehicleDataWithDetails.map(({ id, brand, model, plate, services, lastService }) => (
           <Tile key={id}>
             <TileHeader>{brand}</TileHeader>
             <TileContent>
@@ -111,14 +107,11 @@ const Tiles = () => {
               {lastService && <TileContentItem> Ult. Servicio: <TileTextBold>{lastService}</TileTextBold></TileContentItem>}
             </TileContent>
             <TileButtonContainer>
-              <button onClick={() => openModal(id)}>Ver</button>
+              <button onClick={() => navigate(`/Vehicle/${id}`)}>Ver</button>
             </TileButtonContainer>
           </Tile>
         ))}
       </SecondDiv>
-      {selectedTileId && (
-        <Modal onClose={closeModal} info={tile} />
-      )}
     </>
   );
 };
