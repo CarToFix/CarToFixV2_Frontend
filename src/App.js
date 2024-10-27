@@ -1,5 +1,5 @@
 /**
- * 
+ * This is the app component where the header and rest of components coexist
  */
 
 import React from 'react';
