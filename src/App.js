@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+/**
+ * This is the app component where the header and rest of components coexist
+ */
 
-function App() {
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import styled from "styled-components";
+
+const Divv = styled.div`
+  overflow: hidden;
+`
+const HeaderContainer = styled.div`  //this is a placeholder for the header
+  background: linear-gradient(70deg, #23406D, #335FA6);
+  height: 10vh;
+`;
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Divv>
+      <HeaderContainer />
+      <Outlet />
+    </Divv>
   );
-}
+};
 
 export default App;
