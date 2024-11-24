@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BiChevronDown } from "react-icons/bi";
+import axios from 'axios';
+import { empleadosSimulados, repuestosSimulados, trabajosSimulados } from './MockData';
 
-const FormContainer = styled.div`
+const Container = styled.div`
 background: #D9D9D9;
 height: 100%;
 border-radius: 15px;
@@ -65,6 +67,39 @@ height: 3vh;
 cursor: pointer;
 color: #838383;
 `
+const OptionContainer = styled.div`
+position: absolute;
+top: 100%;
+left: 0;
+width: 100%;
+max-height: 75px;
+border: 1px solid #979696;
+background: #D9D9D9;;
+border-radius: 15px;
+z-index: 1;
+overflow-y: auto;
+&::-webkit-scrollbar {
+  width: 8px;
+}
+&::-webkit-scrollbar-thumb {
+  background: #BABABA;
+  border-radius: 8px;
+  margin: 15px;
+}
+&::-webkit-scrollbar-track {
+  background: #D9D9D9;
+  border-radius: 8px;
+  margin: 8px;
+}
+`
+const Option = styled.div`
+padding: 8px;
+cursor: pointer;
+background-color: ${({ selected }) => (selected ? '#eee' : '#BABABA')};
+&:hover {
+background-color: #f0f0f0;
+}
+`
 const ButtonContainer = styled.div`
 display: flex;
 justify-content: flex-end;
@@ -83,43 +118,153 @@ border-radius: 15px;
 font-family: "inter", sans-serif;
 cursor: pointer;
 `
-export default function formContainer() {
-  // para mostar la opcion de desplazar la información
-  const [Trabajos, setTrabajos] = useState([]);
-  const [Empleados, setEmpleados] = useState([]);
+export default function FormContainer({addJob}) {
+  // Contiene los valores de cada campo
+const [formState, setformState] = useState({
+  trabajo: {input: '', selected: '', showOptions: false},
+  empleado: {input: '', selected: '', showOptions: false},
+  repuesto: {input: '', selected: '', showOptions: false},
+  precio: ''
+})
+// Guarda las opciones disponibles para cada campo
+const [option, setoption] = useState({
+  trabajo: [],
+  empleado: [],
+  repuesto: []
+})
 
+  useEffect(() =>{
+    setoption({
+      trabajo: trabajosSimulados,
+      empleado: empleadosSimulados,
+      repuesto: repuestosSimulados
+    })
+  }, []);
+
+  // Cuando se escribe en el campo esta función acrualiza el valor de input (field) y muestra las opciones (showoptions)
+  const handleInputChange = (field, value) => {
+    setformState(prevState => ({
+      ...prevState,
+      [field]: {
+        ...prevState[field],
+        input: value,
+        showOptions: true
+      }
+    }))
+  };
+  // Cuando se selecciona una opcion esto actualiza el selected y input con la opcion que se elige y oculta las opciones (showOptions)
+  const handleSelectOption = (field, item) => {
+    setformState(prevState => ({
+      ...prevState,
+      [field]: {
+        ...prevState[field],
+        selected: item.nombre,
+        input: item.nombre,
+        showOptions: false
+      }
+    }))
+  };
+  // oculta o muestra las opciones
+  const ToggleOtions = (field) => {
+    setformState(prevState => ({
+      ...prevState,
+      [field]: {
+        ...prevState[field],
+        showOptions: !prevState[field].showOptions
+      }
+    }))
+  }
+  // Filtra las opciones segun el texto
+  const filteredOptions = (field) => {
+    return option[field].filter(item =>
+      item.nombre.toLowerCase().includes(formState[field].input.toLowerCase())
+    )
+  }
+  const handleAddJob = () => {
+    const newJob = {
+      trabajo: formState.trabajo.selected || formState.trabajo.input,
+      precio: formState.precio,
+      empleado: formState.empleado.selected || formState.empleado.input,
+      repuesto: formState.repuesto.selected || formState.repuesto.input,
+    };
+    addJob(newJob); // Llamada a la función para agregar el trabajo
+    setformState({
+      trabajo: { input: '', selected: '', showOptions: false },
+      empleado: { input: '', selected: '', showOptions: false },
+      repuesto: { input: '', selected: '', showOptions: false },
+      precio: ''
+    });
+  };
   return(
-    <FormContainer>
+    <Container>
       <DivInfo>
         <Rowinfo>
             <Title>Titulo</Title>
             <InputContainer>
-            <Box> 
-            </Box>
+            <Box></Box>
             </InputContainer>
           </Rowinfo>
           <Rowinfo>
             <Title>Trabajo</Title>
             <InputContainer>
-            <Box> 
-            </Box>
-              <Icons/>
+            <Box
+            value={formState.trabajo.input}
+            onChange={(e) => handleInputChange('trabajo', e.target.value)}
+            />
+            <Icons onClick={() => ToggleOtions('trabajo')}/>
+              {formState.trabajo.showOptions && (
+                <OptionContainer>
+                  {filteredOptions('trabajo').map((item) => (
+                    <Option
+                    key={item.id}
+                    onClick={() => handleSelectOption('trabajo', item)}>
+                      {item.nombre}
+                    </Option>
+                  ))}
+                </OptionContainer>
+              )}
             </InputContainer>
         </Rowinfo>
         <Rowinfo>
             <Title>Asignado a</Title>
             <InputContainer>
-            <Box> 
-            </Box>
-              <Icons/>
+            <Box
+            value={formState.empleado.input}
+            onChange={(e) => handleInputChange('empleado', e.target.value)}
+            />
+            <Icons onClick={() => ToggleOtions('empleado')}/>
+              {formState.empleado.showOptions && (
+                <OptionContainer>
+                  {filteredOptions('empleado').map((item) => (
+                    <Option
+                    key={item.id}
+                    onClick={() => handleSelectOption('empleado', item)}>
+                      {item.nombre}
+                    </Option>
+                  ))}
+                </OptionContainer>
+              )}
             </InputContainer>
         </Rowinfo>
         <Rowinfo>
             <Title>Repuestos</Title>
             <InputContainer>
-            <Box> 
-            </Box>
-              <Icons/>
+            <Box
+            value={formState.repuesto.input}
+            onChange={(e) => handleInputChange('repuesto', e.target.value)}
+            />
+            <Icons onClick={() => ToggleOtions('repuesto')}/>
+              {formState.repuesto.showOptions && (
+                <OptionContainer>
+                  {filteredOptions('repuesto').map((item) => (
+                    <Option
+                    key={item.id}
+                    onClick={() => handleSelectOption('repuesto', item)}>
+                      {item.nombre}
+                    </Option>
+                  ))}
+                </OptionContainer>
+              )}
             </InputContainer>
         </Rowinfo>
         <Rowinfo>
@@ -129,15 +274,15 @@ export default function formContainer() {
         <Rowinfo>
             <Title>Precio</Title>
             <InputContainer>
-            <Box> 
-            </Box>
-              <Icons/>
+            <Box
+            value={formState.precio}
+            onChange={(e) => setformState({...formState, precio: e.target.value})}/>
             </InputContainer>
         </Rowinfo>
       </DivInfo>
       <ButtonContainer>
-        <ButtonAdd>Agregar</ButtonAdd>
+        <ButtonAdd onClick={handleAddJob}>Agregar</ButtonAdd>
       </ButtonContainer>
-    </FormContainer>
+    </Container>
   )
 }

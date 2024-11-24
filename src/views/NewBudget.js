@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import FormContainer from '../components/FormContainer'; //Formulario lado izquierdo
+import FormContainer from '../components/FormContainer';
 import Plates from '../components/Plates'; //informacion sobres las placas
 import JobListContainer from '../components/JobListContainer';
 import SummaryContainer from '../components/SummaryContainer';
@@ -46,16 +46,20 @@ display: flex;
 flex-direction: column;
 `
 export default function NewBudget() {
+  const [jobs, setjobs] = useState([]);
+  const addJob = (newJob) => {
+    setjobs([...jobs, newJob]);
+  }
   return (
     <OtherContainer>
       <MainContainer>
         <InformationLeft>
           <Tilte>NUEVO PRESUPUESTO</Tilte>
-          <FormContainer></FormContainer>
+          <FormContainer addJob={addJob}/>
         </InformationLeft>
         <InformationRight>
           <Plates></Plates>
-          <JobListContainer></JobListContainer>
+          <JobListContainer jobs={jobs}/>
           <SummaryContainer></SummaryContainer>
         </InformationRight>
       </MainContainer>

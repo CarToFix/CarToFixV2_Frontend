@@ -92,46 +92,21 @@ font-family: "inter", sans-serif;
 cursor: pointer;
 `
 
-export default function JobListContainer() {
+export default function JobListContainer({jobs}) {
   return (
     <ListContainer>
       <DivInfo>
-        <Information>
+        {jobs.map((job, index) => (
+          <Information key={index}>
           <DivList>
-            <DescriptionList>cambio de aceite</DescriptionList>
-            <PriceList>$590</PriceList>
+            <DescriptionList>{job.trabajo}</DescriptionList>
+            <PriceList>{job.precio}</PriceList>
           </DivList>
           <DivButton>
             <ButtonView>Ver</ButtonView>
           </DivButton>
         </Information>
-        <Information>
-          <DivList>
-            <DescriptionList>cambio de aceite</DescriptionList>
-            <PriceList>$590</PriceList>
-          </DivList>
-          <DivButton>
-            <ButtonView>Ver</ButtonView>
-          </DivButton>
-        </Information>
-        <Information>
-          <DivList>
-            <DescriptionList>cambio de aceite</DescriptionList>
-            <PriceList>$590</PriceList>
-          </DivList>
-          <DivButton>
-            <ButtonView>Ver</ButtonView>
-          </DivButton>
-        </Information>
-        <Information>
-          <DivList>
-            <DescriptionList>cambio de aceite</DescriptionList>
-            <PriceList>$590</PriceList>
-          </DivList>
-          <DivButton>
-            <ButtonView>Ver</ButtonView>
-          </DivButton>
-        </Information>
+        ))}
       </DivInfo>
       <DivButtonSave>
         <ButtonSave>Guardar</ButtonSave>
