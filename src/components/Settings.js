@@ -1,39 +1,53 @@
-import React from "react";
+import React, { useState } from 'react';
 import styled from "styled-components";
 import XIcon from "../assets/X.svg";
+import Pin from '../components/Pin';
 
 const Settings = ({ onClose }) => {
+  const [showPin, setShowPin] = useState(false);
+
+  const togglePin = () => {
+    setShowPin(!showPin);
+  };
+
+  const closePin = () => {
+    setShowPin(false);
+  };
+
   return (
-    <SettingsContainer>
-      <Box1>
-        <CloseButton onClick={onClose}>
-          <img src={XIcon} alt="Cerrar" />
-        </CloseButton>
-      </Box1>
-      <Box2>
-        <h3
-          style={{ cursor: "pointer" }}
-          onClick={() => console.log("Configuración del taller")}
-        >
-          Configuración del taller
-        </h3>
-        <h3
-          style={{ cursor: "pointer" }}
-          onClick={() => console.log("Gestión de usuarios")}
-        >
-          Gestión de usuarios
-        </h3>
-        <h3
-          style={{ cursor: "pointer" }}
-          onClick={() => console.log("Contáctanos")}
-        >
-          Contáctanos
-        </h3>
-      </Box2>
-      <Box3>
-        <h2>Cerrar Sesión</h2>
-      </Box3>
-    </SettingsContainer>
+    <>
+      <SettingsContainer>
+        <Box1>
+          <CloseButton onClick={onClose}>
+            <img src={XIcon} alt="Cerrar" />
+          </CloseButton>
+        </Box1>
+        <Box2>
+          <h3
+            style={{ cursor: "pointer" }}
+            onClick={togglePin}
+          >
+            Configuración del taller
+          </h3>
+          <h3
+            style={{ cursor: "pointer" }}
+            onClick={togglePin}
+          >
+            Gestión de usuarios
+          </h3>
+          <h3
+            style={{ cursor: "pointer" }}
+            onClick={() => console.log("Contáctanos")}
+          >
+            Contáctanos
+          </h3>
+        </Box2>
+        <Box3>
+          <h2 style={{ cursor: "pointer" }} onClick={() => console.log("Cerrar Sesión")}>Cerrar Sesión</h2>
+        </Box3>
+      </SettingsContainer>
+      {showPin && <Pin onClose={closePin} />}
+    </>
   );
 };
 
